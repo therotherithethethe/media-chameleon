@@ -1,0 +1,3 @@
+.underlineable-label:hover {
+  -fx-underline: true;
+}

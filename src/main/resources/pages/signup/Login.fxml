@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane fx:id="mainAncPane" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" stylesheets="@../../styles/SignupMenuStyles.css" HBox.hgrow="ALWAYS" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.therotherithethethe.controllers.signup.LoginController">
+  <children>
+    <VBox alignment="CENTER" fillWidth="false" layoutX="99.0" minHeight="0.0" minWidth="0.0" spacing="20.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+      <children>
+        <Label text="Welcome">
+          <font>
+            <Font name="System Bold" size="43.0" />
+          </font>
+        </Label>
+        <Label text="Access your account">
+          <VBox.margin>
+            <Insets top="-25.0" />
+          </VBox.margin>
+          <font>
+            <Font size="23.0" />
+          </font>
+        </Label>
+        <TextField fx:id="loginLbl" maxWidth="400.0" minWidth="100.0" prefWidth="300.0" promptText="Enter email or username">
+          <VBox.margin>
+            <Insets />
+          </VBox.margin>
+        </TextField>
+        <TextField fx:id="passwordLbl" maxWidth="400.0" minWidth="100.0" prefWidth="300.0" promptText="Enter password">
+          <VBox.margin>
+            <Insets />
+          </VBox.margin>
+        </TextField>
+            <BorderPane prefHeight="25.0" prefWidth="307.0">
+               <center>
+              <Button mnemonicParsing="false" prefHeight="25.0" prefWidth="118.0" text="Login" BorderPane.alignment="CENTER" />
+               </center>
+            </BorderPane>
+            <Label fx:id="registerLbl" onMouseClicked="#handleCreateAccount" text="Create new account" styleClass="underlineable-label" textFill="#5c72ee">
+               <VBox.margin>
+                  <Insets top="-7.0" />
+               </VBox.margin>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
+            </Label>
+      </children>
+    </VBox>
+  </children>
+</AnchorPane>
