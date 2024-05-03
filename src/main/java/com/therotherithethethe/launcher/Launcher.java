@@ -1,4 +1,4 @@
-package com.therotherithethethe;
+package com.therotherithethethe.launcher;
 
 import java.util.Objects;
 import javafx.application.Application;
@@ -7,11 +7,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
-public class Main extends Application {
-
-    public static void main(String[] args) {
-        launch();
-    }
+public class Launcher extends Application {
 
     @Override
     public void start(Stage primaryStage) throws Exception {

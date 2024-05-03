@@ -9,9 +9,9 @@ import javax.imageio.ImageWriteParam;
 import javax.imageio.ImageWriter;
 import javax.imageio.stream.ImageOutputStream;
 
-public class Main2 {
+public class ConverterTest {
 
-    public static void main(String[] args) {
+    public static void convert(String[] args) {
         String inputBmpPath = "C:\\Users\\zhenya\\IdeaProjects\\mediachameleon\\image.bmp";
         String outputJpgPath = "C:\\Users\\zhenya\\IdeaProjects\\mediachameleon\\image.jpg";
         float compressionQuality =
