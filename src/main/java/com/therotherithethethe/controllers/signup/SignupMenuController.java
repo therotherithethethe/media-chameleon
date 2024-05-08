@@ -1,6 +1,5 @@
 package com.therotherithethethe.controllers.signup;
 
-import java.io.IOException;
 import java.net.URL;
 import java.util.Objects;
 import java.util.ResourceBundle;
@@ -9,6 +8,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.HBox;
+import javafx.scene.layout.Pane;
 import javafx.scene.layout.Priority;
 
 public class SignupMenuController implements Initializable {
@@ -24,8 +24,9 @@ public class SignupMenuController implements Initializable {
     private void initializeLoginMenu() {
         AnchorPane loginAncPane = new AnchorPane();
         try {
-            loginAncPane = FXMLLoader.load(
-                Objects.requireNonNull(getClass().getResource("/pages/signup/Login.fxml")));
+            loginAncPane =
+                FXMLLoader.load(
+                    Objects.requireNonNull(getClass().getResource("/pages/signup/Login.fxml")));
         } catch (Exception e) {
             e.printStackTrace();
         }

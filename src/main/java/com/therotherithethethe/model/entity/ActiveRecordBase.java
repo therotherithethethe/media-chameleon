@@ -2,44 +2,80 @@ package com.therotherithethethe.model.entity;
 
 import com.therotherithethethe.model.HibernateUtil;
 import jakarta.persistence.TypedQuery;
+import java.util.Collections;
 import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
 import java.util.UUID;
-import org.hibernate.Hibernate;
+import java.util.function.Predicate;
+import java.util.stream.Collectors;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 
-public abstract class ActiveRecordBase {
+public abstract class ActiveRecordBase<T extends Model> {
+
     private static final SessionFactory sessionFactory = HibernateUtil.getSessionFactory();
-    public boolean save() {
-        if (Objects.isNull(getId())) {
-            setId(UUID.randomUUID());
-            return insert();
+
+    /*public static Optional<?> findByColumn(
+        String columnName, Object value, Class<? extends Model> clazz) {
+        try (Session session = sessionFactory.openSession()) {
+            TypedQuery<?> query =
+                session.createQuery(STR."FROM \{clazz.getSimpleName()} WHERE \{columnName} = :1",
+                    clazz);
+            query.setParameter(":1", value);
+            return query.getResultStream().findFirst();
+        } catch (Exception ex) {
+            // TODO: need to use logger
+            return Optional.empty();
         }
-        return update();
+    }*/
+
+    public boolean save() {
+        try (Session session = sessionFactory.openSession()) {
+            Transaction transaction = session.beginTransaction();
+            if (Objects.isNull(getId())) {
+                session.persist(this);
+            } else {
+                session.merge(this);
+            }
+            transaction.commit();
+            return true;
+        } catch (Exception ex) {
+            // TODO: use logger
+            return false;
+        }
     }
 
-    public List<?> findAll(Class<? extends Model> clazz) {
+    public List<T> findAll() {
         try (Session session = sessionFactory.openSession()) {
-            TypedQuery<?> query = session.createQuery(STR."FROM \{clazz.getSimpleName()}", clazz);
-            return query.getResultList();
+            return getTypedQuery(session).getResultList();
         } catch (Exception ex) {
-            //TODO: need to use logger
+            // TODO: need to use logger
             return null;
         }
     }
+
+    private TypedQuery<T> getTypedQuery(Session session) {
+        // @SuppressWarnings("unchecked")
+        // Class<T> clazz = (Class<T>) ((ParameterizedType)
+        // getClass().getGenericSuperclass()).getActualTypeArguments()[0];
+        Class<T> clazz = (Class<T>) getClass();
+        return session.createQuery("FROM " + clazz.getSimpleName(), clazz);
+    }
+
     public abstract UUID getId();
+
     public abstract void setId(UUID id);
-    private boolean insert() {
-        try (Session session = sessionFactory.openSession(); ) {
+
+    /*private boolean insert() {
+        try (Session session = sessionFactory.openSession()) {
             Transaction transaction = session.beginTransaction();
             session.persist(this);
             transaction.commit();
             return true;
         } catch (Exception ex) {
-            //TODO: need to use logger
+            // TODO: need to use logger
             return false;
         }
     }
@@ -51,10 +87,10 @@ public abstract class ActiveRecordBase {
             transaction.commit();
             return true;
         } catch (Throwable ex) {
-            //TODO: need to use logger
+            // TODO: need to use logger
             return false;
         }
-    }
+    }*/
 
     public void delete() {
         Session session = sessionFactory.openSession();
@@ -64,16 +100,23 @@ public abstract class ActiveRecordBase {
         session.close();
     }
 
-    public static Optional<?> findByColumn(String columnName, Object value, Class<? extends Model> clazz) {
+    public Optional<T> findById(UUID uuid) {
+      return findByColumn(entity ->
+          entity.getId()
+              .equals(uuid)).stream()
+          .findFirst();
+    }
+
+    public List<T> findByColumn(Predicate<T> predicate) {
         try (Session session = sessionFactory.openSession()) {
-            TypedQuery<?> query =
-                session.createQuery(
-                    STR."FROM \{clazz.getName()} WHERE \{columnName} = :1", clazz);
-            query.setParameter(":1", value);
-            return query.getResultStream().findFirst();
+            return getTypedQuery(session)
+                .getResultStream()
+                .filter(predicate)
+                .toList();
+
         } catch (Exception ex) {
-            //TODO: need to use logger
-            return Optional.empty();
+            // TODO: need to use logger
+            return Collections.emptyList();
         }
     }
 }
