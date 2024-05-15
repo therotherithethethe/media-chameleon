@@ -5,12 +5,14 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.PasswordField?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.Tooltip?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
-<AnchorPane fx:id="mainAncPane" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" stylesheets="@../../styles/SignupMenuStyles.css" HBox.hgrow="ALWAYS" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.therotherithethethe.controllers.signup.RegisterController">
+
+<AnchorPane fx:id="mainAncPane" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" stylesheets="@../../styles/SignupMenuStyles.css" HBox.hgrow="ALWAYS" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.therotherithethethe.presentation.controllers.signup.RegisterController">
   <children>
     <VBox alignment="CENTER" fillWidth="false" layoutX="99.0" minHeight="0.0" minWidth="0.0" spacing="20.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
       <children>
@@ -31,13 +33,16 @@
           <VBox.margin>
             <Insets />
           </VBox.margin>
+               <tooltip>
+                  <Tooltip text="• The length must be &gt; 3 and &lt; 26&#10;The Text must:&#10;• not contain any symbol besides &quot;.&quot; and &quot;_&quot;&#10;• not contain doubled symbols" />
+               </tooltip>
         </TextField>
         <TextField fx:id="emailTxtF" maxWidth="400.0" minWidth="100.0" prefWidth="300.0" promptText="Enter email" />
             <PasswordField fx:id="passwordPassF" maxWidth="400.0" minWidth="100.0" prefWidth="300.0" promptText="Enter password" />
             <PasswordField fx:id="rePasswordPassF" maxWidth="400.0" minWidth="100.0" prefWidth="300.0" promptText="Retype password" />
         <BorderPane prefHeight="25.0" prefWidth="307.0">
           <center>
-            <Button fx:id="confirmBtn" onAction="#handleConfirmMenu" mnemonicParsing="false" prefHeight="25.0" prefWidth="118.0" text="Register" BorderPane.alignment="CENTER" />
+            <Button fx:id="confirmBtn" mnemonicParsing="false" onAction="#handleConfirmMenu" prefHeight="25.0" prefWidth="118.0" text="Register" BorderPane.alignment="CENTER" />
           </center>
         </BorderPane>
             <Button mnemonicParsing="false" onAction="#handleLoginAccount" styleClass="transparent-button" text="Have account?" textFill="#5c72ee">

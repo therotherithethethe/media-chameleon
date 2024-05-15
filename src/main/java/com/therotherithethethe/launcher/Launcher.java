@@ -1,11 +1,12 @@
 package com.therotherithethethe.launcher;
 
-import com.therotherithethethe.model.HibernateUtil;
+import com.therotherithethethe.domain.utils.HibernateUtil;
 import java.util.Objects;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.image.Image;
 import javafx.stage.Screen;
 import javafx.stage.Stage;
 
@@ -13,7 +14,9 @@ public class Launcher extends Application {
 
 
     @Override
-    public void init() throws Exception {
+    public void init() {
+        new Thread(HibernateUtil::buildSessionFactory).start();
+
     }
 
     @Override
@@ -28,6 +31,10 @@ public class Launcher extends Application {
         double height = primaryScreen.getBounds().getHeight() / 2.1;
         primaryStage.setMinWidth(width);
         primaryStage.setMinHeight(height);
+        primaryStage.setTitle(" media-chameleon");
+        Image applicationIcon = new Image(
+            Objects.requireNonNull(getClass().getClassLoader().getResourceAsStream("assets/fileconverter_white_icon.png")));
+        primaryStage.getIcons().add(applicationIcon);
 
         Scene scene = new Scene(root);
         primaryStage.setScene(scene);
