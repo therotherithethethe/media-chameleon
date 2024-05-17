@@ -5,11 +5,18 @@ import org.hibernate.cfg.Configuration;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+/**
+ * Utility class for initializing Hibernate.
+ */
 public class HibernateUtil {
 
     //private static final SessionFactory sessionFactory = buildSessionFactory();
     private static final Logger LOGGER = LoggerFactory.getLogger(HibernateUtil.class);
-
+    /**
+     * Builds and returns the Hibernate SessionFactory.
+     *
+     * @return the Hibernate SessionFactory
+     */
     public static SessionFactory buildSessionFactory() {
         try {
             return new Configuration().configure().buildSessionFactory();

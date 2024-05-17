@@ -3,14 +3,17 @@ package com.therotherithethethe.launcher;
 import javafx.application.Application;
 import javax.mail.MessagingException;
 
+/**
+ * Main class to launch the application.
+ */
 public class Main {
-
+    /**
+     * Main method to launch the application.
+     *
+     * @param args command line arguments
+     */
     public static void main(String[] args) {
         Application.launch(Launcher.class, args);
-        //Account account = new Account(null, "boklah", "boklah@gmaul", "1212");
-        //account.save();
-        //var emailSender = new EmailSender("MS_HwoDP1@trial-jy7zpl932p3l5vx6.mlsender.net", "h0rvGBuq3XxBHPQx");
-        //emailSender.sendEmail("blackbetch2@gmail.com", "Email Verification", "я тебе люблю");
     }
 
 }

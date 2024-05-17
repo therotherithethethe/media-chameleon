@@ -19,7 +19,9 @@ import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
-
+/**
+ * Controller class for the confirm email view.
+ */
 public class ConfirmEmailController implements Initializable {
 
     @FXML
@@ -34,6 +36,11 @@ public class ConfirmEmailController implements Initializable {
     public Button confirmAccountBtn;
     @FXML
     public TextField verificationCodeTxtF;
+    /**
+     * Handles the click event for the confirm account button.
+     *
+     * @param event the action event
+     */
     @FXML
     public void confirmAccountBtnClick(ActionEvent event) {
         Alert alert;
@@ -55,12 +62,21 @@ public class ConfirmEmailController implements Initializable {
         handleRegisterMenu();
 
     }
-
+    /**
+     * Initializes the controller class.
+     *
+     * @param url the location used to resolve relative paths for the root object, or null if the location is not known
+     * @param resourceBundle the resources used to localize the root object, or null if the root object was not localized
+     */
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         initializeTimer();
     }
-
+    /**
+     * Handles the click event for the resend code button.
+     *
+     * @param event the action event
+     */
     @FXML
     private void resendCodeBtnClick(ActionEvent event) {
         initializeTimer();
@@ -68,7 +84,9 @@ public class ConfirmEmailController implements Initializable {
         SignupServiceImpl signupService = SignupServiceImpl.getInstance();
         signupService.sendEmail();
     }
-
+    /**
+     * Initializes the timer for the resend code button.
+     */
     private void initializeTimer() {
         timerLbl.setText("40");
         timerLbl
@@ -94,7 +112,11 @@ public class ConfirmEmailController implements Initializable {
             };
         new Thread(timerReduction).start();
     }
-
+    /**
+     * Handles the click event for the return register menu button.
+     *
+     * @param event the action event
+     */
     @FXML
     private void returnRegisterMenuBtnClick(ActionEvent event) {
         /*try {
@@ -110,7 +132,9 @@ public class ConfirmEmailController implements Initializable {
         }*/
         handleRegisterMenu();
     }
-
+    /**
+     * Handles the action to return to the register menu.
+     */
     private void handleRegisterMenu() {
         Pane pane = (Pane) mainAncPane.getParent();
         pane.getChildren().removeLast();

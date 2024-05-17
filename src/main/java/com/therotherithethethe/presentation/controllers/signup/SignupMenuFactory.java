@@ -7,9 +7,17 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.Priority;
-
+/**
+ * Factory class for creating signup menu views.
+ */
 public class SignupMenuFactory {
     private SignupMenuFactory(){}
+    /**
+     * Adds the register menu to the specified pane.
+     *
+     * @param paneToAdd the pane to add the register menu to
+     * @return the added register menu
+     */
     public static AnchorPane addRegisterMenu(Pane paneToAdd) {
         try {
             AnchorPane registerPane = FXMLLoader.load(
@@ -24,6 +32,12 @@ public class SignupMenuFactory {
             return null;
         }
     }
+    /**
+     * Adds the login menu to the specified pane.
+     *
+     * @param paneToAdd the pane to add the login menu to
+     * @return the added login menu
+     */
     public static AnchorPane addLoginMenu(Pane paneToAdd) {
         try {
             AnchorPane loginPane = FXMLLoader.load(
@@ -38,6 +52,12 @@ public class SignupMenuFactory {
             return null;
         }
     }
+    /**
+     * Adds the confirm menu to the specified pane.
+     *
+     * @param paneToAdd the pane to add the confirm menu to
+     * @return the added confirm menu
+     */
     public static AnchorPane addConfirmMenu(Pane paneToAdd) {
         try {
             AnchorPane confirmPane = FXMLLoader.load(
@@ -53,6 +73,12 @@ public class SignupMenuFactory {
             return null;
         }
     }
+    /**
+     * Adds the confirm new password menu to the specified pane.
+     *
+     * @param paneToAdd the pane to add the confirm new password menu to
+     * @return the added confirm new password menu
+     */
     public static AnchorPane addConfirmNewPassMenu(Pane paneToAdd) {
         try {
             AnchorPane newPassword = FXMLLoader.load(

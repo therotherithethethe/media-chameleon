@@ -19,7 +19,9 @@ import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
-
+/**
+ * Controller class for the login view.
+ */
 public class LoginController implements Initializable {
 
     @FXML
@@ -33,12 +35,22 @@ public class LoginController implements Initializable {
     @FXML
     public Button forgotPassBtn;
     private final AccountService accService = AccountService.getInstance();
-
+    /**
+     * Initializes the controller class.
+     *
+     * @param url the location used to resolve relative paths for the root object, or null if the location is not known
+     * @param resourceBundle the resources used to localize the root object, or null if the root object was not localized
+     */
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         // nothing to initialize
 
     }
+    /**
+     * Handles the click event for the forgot password button.
+     *
+     * @param ev the action event
+     */
     @FXML
     private void handleForgotPassBtn(ActionEvent ev) {
         String nameOrEmail = loginTxtF.getText();
@@ -70,6 +82,9 @@ public class LoginController implements Initializable {
         fxmlLoader.setController(new ConfirmEmailForChangePassController());*/
         SignupMenuFactory.addConfirmMenu(pane);
     }
+    /**
+     * Checks account credentials for login.
+     */
     private void checkAccountCredentials() {
         String usernameOrEmail = loginTxtF.getText();
         String password = passwordTxtF.getText();
@@ -84,7 +99,9 @@ public class LoginController implements Initializable {
         alert.setContentText("Error. Credentials are invalid or account is missing");
         alert.showAndWait();
     }
-
+    /**
+     * Sets the main menu after successful login.
+     */
     private void setMainMenu() {
         Alert alert = new Alert(AlertType.CONFIRMATION);
         alert.setContentText("You`re Welcome!");
@@ -94,7 +111,12 @@ public class LoginController implements Initializable {
         Scene scene = new Scene(mainMenu);
         mainStage.setScene(scene);
     }
-
+    /**
+     * Gets the account by username or email.
+     *
+     * @param usernameOrEmail the username or email
+     * @return an optional containing the account or empty if not found
+     */
     private static Optional<Account> getAccount(String usernameOrEmail) {
         return new Account()
             .findByColumn(
@@ -102,7 +124,11 @@ public class LoginController implements Initializable {
             .stream()
             .findFirst();
     }
-
+    /**
+     * Handles the click event for creating an account.
+     *
+     * @param event the action event
+     */
     @FXML
     private void handleCreateAccountMenu(ActionEvent event) {
         /*try {
@@ -122,7 +148,11 @@ public class LoginController implements Initializable {
       SignupMenuFactory.addRegisterMenu(pane);
 
     }
-
+    /**
+     * Handles the click event for the login button.
+     *
+     * @param event the action event
+     */
     public void loginBtnClick(ActionEvent event) {
         checkAccountCredentials();
     }

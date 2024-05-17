@@ -1387,3 +1387,66 @@
 2024-05-13 20:07:47 ERROR ConverterMenu:119 - 
 2024-05-13 20:07:50 ERROR ConverterMenu:119 - 
 2024-05-13 20:07:51 ERROR ConverterMenu:119 - 
+2024-05-16 20:21:56 ERROR SqlExceptionHelper:150 - Database may be already in use: "C:/Users/zhenya/IdeaProjects/media-chameleon/data/data.mv.db". Possible solutions: close all other connection(s); use the server mode [90020-224]
+2024-05-16 20:21:56 ERROR HibernateUtil:18 - Unable to create requested service [org.hibernate.engine.jdbc.env.spi.JdbcEnvironment] due to: Error calling Driver#connect [Database may be already in use: "C:/Users/zhenya/IdeaProjects/media-chameleon/data/data.mv.db". Possible solutions: close all other connection(s); use the server mode [90020-224]] [null]
+2024-05-16 20:22:13 ERROR SqlExceptionHelper:150 - Syntax error in SQL statement "TRUNCATE [*]SCHEMA PUBLIC RESTART IDENTITY AND COMMIT NO CHECK"; expected "TABLE"; SQL statement:
+TRUNCATE SCHEMA PUBLIC RESTART IDENTITY AND COMMIT NO CHECK [42001-224]
+2024-05-16 20:22:13 ERROR SqlExceptionHelper:150 - Syntax error in SQL statement "TRUNCATE [*]SCHEMA PUBLIC RESTART IDENTITY AND COMMIT NO CHECK"; expected "TABLE"; SQL statement:
+TRUNCATE SCHEMA PUBLIC RESTART IDENTITY AND COMMIT NO CHECK [42001-224]
+2024-05-16 20:22:13 ERROR SqlExceptionHelper:150 - Syntax error in SQL statement "TRUNCATE [*]SCHEMA PUBLIC RESTART IDENTITY AND COMMIT NO CHECK"; expected "TABLE"; SQL statement:
+TRUNCATE SCHEMA PUBLIC RESTART IDENTITY AND COMMIT NO CHECK [42001-224]
+2024-05-16 20:22:13 ERROR SqlExceptionHelper:150 - Syntax error in SQL statement "TRUNCATE [*]SCHEMA PUBLIC RESTART IDENTITY AND COMMIT NO CHECK"; expected "TABLE"; SQL statement:
+TRUNCATE SCHEMA PUBLIC RESTART IDENTITY AND COMMIT NO CHECK [42001-224]
+2024-05-16 20:22:13 ERROR SqlExceptionHelper:150 - Syntax error in SQL statement "TRUNCATE [*]SCHEMA PUBLIC RESTART IDENTITY AND COMMIT NO CHECK"; expected "TABLE"; SQL statement:
+TRUNCATE SCHEMA PUBLIC RESTART IDENTITY AND COMMIT NO CHECK [42001-224]
+2024-05-16 20:22:56 ERROR SqlExceptionHelper:150 - Syntax error in SQL statement "select u1_0.id,u1_0.name from [*]User u1_0 where u1_0.id=?"; expected "identifier"; SQL statement:
+select u1_0.id,u1_0.name from User u1_0 where u1_0.id=? [42001-224]
+2024-05-16 20:22:56 ERROR SqlExceptionHelper:150 - Syntax error in SQL statement "select u1_0.id,u1_0.name from [*]User u1_0 where u1_0.id=?"; expected "identifier"; SQL statement:
+select u1_0.id,u1_0.name from User u1_0 where u1_0.id=? [42001-224]
+2024-05-16 20:22:56 ERROR SqlExceptionHelper:150 - Syntax error in SQL statement "select u1_0.id,u1_0.name from [*]User u1_0 where u1_0.id=?"; expected "identifier"; SQL statement:
+select u1_0.id,u1_0.name from User u1_0 where u1_0.id=? [42001-224]
+2024-05-16 20:22:57 ERROR SqlExceptionHelper:150 - Syntax error in SQL statement "select u1_0.id,u1_0.name from [*]User u1_0"; expected "identifier"; SQL statement:
+select u1_0.id,u1_0.name from User u1_0 [42001-224]
+2024-05-16 20:22:57 ERROR SqlExceptionHelper:150 - Syntax error in SQL statement "select u1_0.id,u1_0.name from [*]User u1_0 where u1_0.id=?"; expected "identifier"; SQL statement:
+select u1_0.id,u1_0.name from User u1_0 where u1_0.id=? [42001-224]
+2024-05-16 20:22:57 ERROR SqlExceptionHelper:150 - Syntax error in SQL statement "select u1_0.id,u1_0.name from [*]User u1_0 where u1_0.id=?"; expected "identifier"; SQL statement:
+select u1_0.id,u1_0.name from User u1_0 where u1_0.id=? [42001-224]
+2024-05-16 20:22:57 ERROR SqlExceptionHelper:150 - Syntax error in SQL statement "select u1_0.id,u1_0.name from [*]User u1_0"; expected "identifier"; SQL statement:
+select u1_0.id,u1_0.name from User u1_0 [42001-224]
+2024-05-16 20:22:57 ERROR SqlExceptionHelper:150 - Syntax error in SQL statement "select u1_0.id,u1_0.name from [*]User u1_0 where u1_0.id=?"; expected "identifier"; SQL statement:
+select u1_0.id,u1_0.name from User u1_0 where u1_0.id=? [42001-224]
+2024-05-16 20:22:57 ERROR SqlExceptionHelper:150 - Syntax error in SQL statement "select null,u1_0.name from [*]User u1_0 where u1_0.id=?"; expected "identifier"; SQL statement:
+select null,u1_0.name from User u1_0 where u1_0.id=? [42001-224]
+2024-05-16 20:24:05 ERROR SqlExceptionHelper:150 - Syntax error in SQL statement "select u1_0.id,u1_0.name from [*]User u1_0 where u1_0.id=?"; expected "identifier"; SQL statement:
+select u1_0.id,u1_0.name from User u1_0 where u1_0.id=? [42001-224]
+2024-05-16 20:24:05 ERROR SqlExceptionHelper:150 - Syntax error in SQL statement "select u1_0.id,u1_0.name from [*]User u1_0 where u1_0.id=?"; expected "identifier"; SQL statement:
+select u1_0.id,u1_0.name from User u1_0 where u1_0.id=? [42001-224]
+2024-05-16 20:24:05 ERROR SqlExceptionHelper:150 - Syntax error in SQL statement "select u1_0.id,u1_0.name from [*]User u1_0 where u1_0.id=?"; expected "identifier"; SQL statement:
+select u1_0.id,u1_0.name from User u1_0 where u1_0.id=? [42001-224]
+2024-05-16 20:24:05 ERROR SqlExceptionHelper:150 - Syntax error in SQL statement "select u1_0.id,u1_0.name from [*]User u1_0"; expected "identifier"; SQL statement:
+select u1_0.id,u1_0.name from User u1_0 [42001-224]
+2024-05-16 20:24:05 ERROR SqlExceptionHelper:150 - Syntax error in SQL statement "select u1_0.id,u1_0.name from [*]User u1_0 where u1_0.id=?"; expected "identifier"; SQL statement:
+select u1_0.id,u1_0.name from User u1_0 where u1_0.id=? [42001-224]
+2024-05-16 20:24:05 ERROR SqlExceptionHelper:150 - Syntax error in SQL statement "select u1_0.id,u1_0.name from [*]User u1_0 where u1_0.id=?"; expected "identifier"; SQL statement:
+select u1_0.id,u1_0.name from User u1_0 where u1_0.id=? [42001-224]
+2024-05-16 20:24:05 ERROR SqlExceptionHelper:150 - Syntax error in SQL statement "select u1_0.id,u1_0.name from [*]User u1_0"; expected "identifier"; SQL statement:
+select u1_0.id,u1_0.name from User u1_0 [42001-224]
+2024-05-16 20:24:05 ERROR SqlExceptionHelper:150 - Syntax error in SQL statement "select u1_0.id,u1_0.name from [*]User u1_0 where u1_0.id=?"; expected "identifier"; SQL statement:
+select u1_0.id,u1_0.name from User u1_0 where u1_0.id=? [42001-224]
+2024-05-16 20:24:05 ERROR SqlExceptionHelper:150 - Syntax error in SQL statement "select null,u1_0.name from [*]User u1_0 where u1_0.id=?"; expected "identifier"; SQL statement:
+select null,u1_0.name from User u1_0 where u1_0.id=? [42001-224]
+2024-05-16 20:31:43 ERROR SqlExceptionHelper:150 - Syntax error in SQL statement "select u1_0.id,u1_0.name from [*]User u1_0 where u1_0.id=?"; expected "identifier"; SQL statement:
+select u1_0.id,u1_0.name from User u1_0 where u1_0.id=? [42001-224]
+2024-05-16 20:31:43 ERROR SqlExceptionHelper:150 - Syntax error in SQL statement "select u1_0.id,u1_0.name from [*]User u1_0 where u1_0.id=?"; expected "identifier"; SQL statement:
+select u1_0.id,u1_0.name from User u1_0 where u1_0.id=? [42001-224]
+2024-05-16 20:31:43 ERROR SqlExceptionHelper:150 - Syntax error in SQL statement "select u1_0.id,u1_0.name from [*]User u1_0 where u1_0.id=?"; expected "identifier"; SQL statement:
+select u1_0.id,u1_0.name from User u1_0 where u1_0.id=? [42001-224]
+2024-05-16 20:31:43 ERROR SqlExceptionHelper:150 - Syntax error in SQL statement "select u1_0.id,u1_0.name from [*]User u1_0"; expected "identifier"; SQL statement:
+select u1_0.id,u1_0.name from User u1_0 [42001-224]
+2024-05-16 20:31:43 ERROR SqlExceptionHelper:150 - Syntax error in SQL statement "select u1_0.id,u1_0.name from [*]User u1_0 where u1_0.id=?"; expected "identifier"; SQL statement:
+select u1_0.id,u1_0.name from User u1_0 where u1_0.id=? [42001-224]
+2024-05-16 20:31:43 ERROR SqlExceptionHelper:150 - Syntax error in SQL statement "select null,u1_0.name from [*]User u1_0 where u1_0.id=?"; expected "identifier"; SQL statement:
+select null,u1_0.name from User u1_0 where u1_0.id=? [42001-224]
+2024-05-16 21:17:30 ERROR SqlExceptionHelper:150 - Database may be already in use: "C:/Users/zhenya/IdeaProjects/media-chameleon/data/data.mv.db". Possible solutions: close all other connection(s); use the server mode [90020-224]
+2024-05-16 21:17:30 ERROR HibernateUtil:18 - Unable to create requested service [org.hibernate.engine.jdbc.env.spi.JdbcEnvironment] due to: Error calling Driver#connect [Database may be already in use: "C:/Users/zhenya/IdeaProjects/media-chameleon/data/data.mv.db". Possible solutions: close all other connection(s); use the server mode [90020-224]] [null]
+2024-05-16 22:10:45 ERROR SqlExceptionHelper:150 - Database is already closed (to disable automatic closing at VM shutdown, add ";DB_CLOSE_ON_EXIT=FALSE" to the db URL) [90121-224]

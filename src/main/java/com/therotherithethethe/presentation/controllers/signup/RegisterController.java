@@ -1,12 +1,12 @@
 package com.therotherithethethe.presentation.controllers.signup;
 
 import com.therotherithethethe.persistance.entity.Account;
-import com.therotherithethethe.persistance.validation.TextValidationHandler;
-import com.therotherithethethe.persistance.validation.account.email.EmailValidationHandler;
-import com.therotherithethethe.persistance.validation.account.password.PasswordValidationHandler;
-import com.therotherithethethe.persistance.validation.account.username.UsernameCharacterValidationHandler;
-import com.therotherithethethe.persistance.validation.account.username.UsernameConsecutiveSymbolValidationHandler;
-import com.therotherithethethe.persistance.validation.account.username.UsernameLengthValidationHandler;
+import com.therotherithethethe.domain.validation.TextValidationHandler;
+import com.therotherithethethe.domain.validation.account.email.EmailValidationHandler;
+import com.therotherithethethe.domain.validation.account.password.PasswordValidationHandler;
+import com.therotherithethethe.domain.validation.account.username.UsernameCharacterValidationHandler;
+import com.therotherithethethe.domain.validation.account.username.UsernameConsecutiveSymbolValidationHandler;
+import com.therotherithethethe.domain.validation.account.username.UsernameLengthValidationHandler;
 import com.therotherithethethe.domain.services.AccountService;
 import com.therotherithethethe.domain.services.SignupServiceImpl;
 import java.net.URL;
@@ -21,7 +21,9 @@ import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
-
+/**
+ * Controller class for the register view.
+ */
 public class RegisterController implements Initializable {
 
     @FXML
@@ -38,7 +40,12 @@ public class RegisterController implements Initializable {
     public AnchorPane mainAncPane;
     private final AccountService accountService = AccountService.getInstance();
     private boolean isFormValid = false;
-
+    /**
+     * Initializes the controller class.
+     *
+     * @param url the location used to resolve relative paths for the root object, or null if the location is not known
+     * @param resourceBundle the resources used to localize the root object, or null if the root object was not localized
+     */
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         initializeUsernameTextFieldValidationListener();
@@ -48,7 +55,11 @@ public class RegisterController implements Initializable {
         confirmBtn.setDisable(true);
     }
 
-
+    /**
+     * Handles the click event for the confirm button.
+     *
+     * @param event the action event
+     */
     @FXML
     private void handleConfirmMenu(ActionEvent event) {
         var account = new Account(null, usernameTxtF.getText(), emailTxtF.getText(),
@@ -68,7 +79,9 @@ public class RegisterController implements Initializable {
         SignupMenuFactory.addConfirmMenu(pane);
     }
 
-    /// copypaste but whatever
+    /**
+     * Updates the confirm button status based on form validation.
+     */
     private void updateConfirmButtonStatus() {
         isFormValid =
             !usernameTxtF.getText().isEmpty()
@@ -83,12 +96,16 @@ public class RegisterController implements Initializable {
         confirmBtn.setDisable(!isFormValid);
     }
 
-
+    /**
+     * Initializes the email text field validation listener.
+     */
     private void initializeEmailTextFieldValidationListener() {
         TextValidationHandler emailValidationHandler = new EmailValidationHandler();
         textFieldSetValidationEventHandler(emailValidationHandler, emailTxtF);
     }
-
+    /**
+     * Initializes the re-password password field validation listener.
+     */
     private void initializeRePasswordPassFieldValidationListener() {
         TextValidationHandler rePasswordValidationHandler =
             new TextValidationHandler() {
@@ -102,7 +119,9 @@ public class RegisterController implements Initializable {
             };
         textFieldSetValidationEventHandler(rePasswordValidationHandler, rePasswordPassF);
     }
-
+    /**
+     * Initializes the username text field validation listener.
+     */
     private void initializeUsernameTextFieldValidationListener() {
         TextValidationHandler validationHandler =
             TextValidationHandler.link(
@@ -112,12 +131,19 @@ public class RegisterController implements Initializable {
 
         textFieldSetValidationEventHandler(validationHandler, usernameTxtF);
     }
-
+    /**
+     * Initializes the password password field validation listener.
+     */
     private void initializePasswordPassFieldValidationListener() {
         TextValidationHandler passwordValidationHandler = new PasswordValidationHandler();
         textFieldSetValidationEventHandler(passwordValidationHandler, passwordPassF);
     }
-
+    /**
+     * Sets the validation event handler for a text field.
+     *
+     * @param textValidationHandler the text validation handler
+     * @param textField the text field
+     */
     private void textFieldSetValidationEventHandler(
         TextValidationHandler textValidationHandler, TextField textField) {
         textField
@@ -136,7 +162,11 @@ public class RegisterController implements Initializable {
                     updateConfirmButtonStatus();
                 });
     }
-
+    /**
+     * Handles the click event for the login account button.
+     *
+     * @param event the action event
+     */
     @FXML
     private void handleLoginAccount(ActionEvent event) {
         Pane pane = (Pane) mainAncPane.getParent();

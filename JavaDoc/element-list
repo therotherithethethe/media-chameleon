@@ -1,0 +1,11 @@
+com.therotherithethethe.domain.services
+com.therotherithethethe.domain.utils
+com.therotherithethethe.domain.validation
+com.therotherithethethe.domain.validation.account.email
+com.therotherithethethe.domain.validation.account.password
+com.therotherithethethe.domain.validation.account.username
+com.therotherithethethe.launcher
+com.therotherithethethe.persistance.entity
+com.therotherithethethe.presentation.controllers.main
+com.therotherithethethe.presentation.controllers.signup
+com.therotherithethethe.presentation.customcontrols

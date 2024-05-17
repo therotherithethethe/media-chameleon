@@ -10,15 +10,25 @@ import javafx.scene.image.Image;
 import javafx.stage.Screen;
 import javafx.stage.Stage;
 
+/**
+ * Launcher class to initialize and start the JavaFX application.
+ */
 public class Launcher extends Application {
 
-
+    /**
+     * Initializes the application by starting a new thread to build the Hibernate session factory.
+     */
     @Override
     public void init() {
         new Thread(HibernateUtil::buildSessionFactory).start();
 
     }
-
+    /**
+     * Starts the JavaFX application by setting up the primary stage.
+     *
+     * @param primaryStage the primary stage
+     * @throws Exception if any exception occurs
+     */
     @Override
     public void start(Stage primaryStage) throws Exception {
 

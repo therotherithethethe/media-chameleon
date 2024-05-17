@@ -1,6 +1,6 @@
 package com.therotherithethethe.presentation.controllers.signup;
 
-import com.therotherithethethe.persistance.validation.account.password.PasswordValidationHandler;
+import com.therotherithethethe.domain.validation.account.password.PasswordValidationHandler;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.fxml.FXML;
