@@ -1450,3 +1450,50 @@ select null,u1_0.name from User u1_0 where u1_0.id=? [42001-224]
 2024-05-16 21:17:30 ERROR SqlExceptionHelper:150 - Database may be already in use: "C:/Users/zhenya/IdeaProjects/media-chameleon/data/data.mv.db". Possible solutions: close all other connection(s); use the server mode [90020-224]
 2024-05-16 21:17:30 ERROR HibernateUtil:18 - Unable to create requested service [org.hibernate.engine.jdbc.env.spi.JdbcEnvironment] due to: Error calling Driver#connect [Database may be already in use: "C:/Users/zhenya/IdeaProjects/media-chameleon/data/data.mv.db". Possible solutions: close all other connection(s); use the server mode [90020-224]] [null]
 2024-05-16 22:10:45 ERROR SqlExceptionHelper:150 - Database is already closed (to disable automatic closing at VM shutdown, add ";DB_CLOSE_ON_EXIT=FALSE" to the db URL) [90121-224]
+2024-05-25 21:05:07 ERROR MainMenuFactory:17 - Error resolving onAction='', either the event handler is not in the Namespace or there is an error in the script.
+/C:/Users/zhenya/IdeaProjects/media-chameleon/target/classes/pages/main/ConverterMenu.fxml:47
+
+2024-05-31 20:19:11 ERROR SqlExceptionHelper:150 - Database may be already in use: "C:/Users/zhenya/IdeaProjects/media-chameleon/data/data.mv.db". Possible solutions: close all other connection(s); use the server mode [90020-224]
+2024-05-31 20:19:11 ERROR SqlExceptionHelper:150 - Database may be already in use: "C:/Users/zhenya/IdeaProjects/media-chameleon/data/data.mv.db". Possible solutions: close all other connection(s); use the server mode [90020-224]
+2024-05-31 20:19:11 ERROR HibernateUtil:25 - Unable to create requested service [org.hibernate.engine.jdbc.env.spi.JdbcEnvironment] due to: Error calling Driver#connect [Database may be already in use: "C:/Users/zhenya/IdeaProjects/media-chameleon/data/data.mv.db". Possible solutions: close all other connection(s); use the server mode [90020-224]] [null]
+2024-05-31 20:19:11 ERROR HibernateUtil:25 - Unable to create requested service [org.hibernate.engine.jdbc.env.spi.JdbcEnvironment] due to: Error calling Driver#connect [Database may be already in use: "C:/Users/zhenya/IdeaProjects/media-chameleon/data/data.mv.db". Possible solutions: close all other connection(s); use the server mode [90020-224]] [null]
+2024-05-31 20:26:00 ERROR SqlExceptionHelper:150 - Database is already closed (to disable automatic closing at VM shutdown, add ";DB_CLOSE_ON_EXIT=FALSE" to the db URL) [90121-224]
+2024-05-31 20:33:01 ERROR MainMenuFactory:17 - 
+/C:/Users/zhenya/IdeaProjects/media-chameleon/target/classes/pages/main/ConverterMenu.fxml
+
+2024-05-31 20:33:54 ERROR MainMenuFactory:17 - 
+/C:/Users/zhenya/IdeaProjects/media-chameleon/target/classes/pages/main/ConverterMenu.fxml
+
+2024-05-31 20:34:28 ERROR MainMenuFactory:17 - 
+/C:/Users/zhenya/IdeaProjects/media-chameleon/target/classes/pages/main/ConverterMenu.fxml
+
+2024-05-31 20:38:08 ERROR MainMenuFactory:17 - 
+/C:/Users/zhenya/IdeaProjects/media-chameleon/target/classes/pages/main/ConverterMenu.fxml
+
+2024-05-31 20:42:11 ERROR MainMenuFactory:17 - 
+/C:/Users/zhenya/IdeaProjects/media-chameleon/target/classes/pages/main/ConverterMenu.fxml
+
+2024-05-31 21:20:57 ERROR SqlExceptionHelper:150 - Unique index or primary key violation: "PUBLIC.UK_10NA602YH2YCNFPW4NR1BD0DU_INDEX_A ON PUBLIC.SESSION(ACCOUNT_ID NULLS FIRST) VALUES ( /* 1 */ UUID '388ceb9a-79fe-4ac2-9d70-202eee814dc0' )"; SQL statement:
+insert into Session (account_id,dateTime,id) values (?,?,?) [23505-224]
+2024-05-31 21:23:00 ERROR SqlExceptionHelper:150 - Unique index or primary key violation: "PUBLIC.UK_10NA602YH2YCNFPW4NR1BD0DU_INDEX_A ON PUBLIC.SESSION(ACCOUNT_ID NULLS FIRST) VALUES ( /* 1 */ UUID '388ceb9a-79fe-4ac2-9d70-202eee814dc0' )"; SQL statement:
+insert into Session (account_id,dateTime,id) values (?,?,?) [23505-224]
+2024-05-31 21:25:48 ERROR SqlExceptionHelper:150 - Unique index or primary key violation: "PUBLIC.UK_10NA602YH2YCNFPW4NR1BD0DU_INDEX_A ON PUBLIC.SESSION(ACCOUNT_ID NULLS FIRST) VALUES ( /* 1 */ UUID '388ceb9a-79fe-4ac2-9d70-202eee814dc0' )"; SQL statement:
+insert into Session (account_id,dateTime,id) values (?,?,?) [23505-224]
+2024-05-31 21:33:22 ERROR SqlExceptionHelper:150 - Database may be already in use: "C:/Users/zhenya/IdeaProjects/media-chameleon/data/data.mv.db". Possible solutions: close all other connection(s); use the server mode [90020-224]
+2024-05-31 21:33:22 ERROR SqlExceptionHelper:150 - Database may be already in use: "C:/Users/zhenya/IdeaProjects/media-chameleon/data/data.mv.db". Possible solutions: close all other connection(s); use the server mode [90020-224]
+2024-05-31 21:33:22 ERROR HibernateUtil:25 - Unable to create requested service [org.hibernate.engine.jdbc.env.spi.JdbcEnvironment] due to: Error calling Driver#connect [Database may be already in use: "C:/Users/zhenya/IdeaProjects/media-chameleon/data/data.mv.db". Possible solutions: close all other connection(s); use the server mode [90020-224]] [null]
+2024-05-31 21:33:22 ERROR HibernateUtil:25 - Unable to create requested service [org.hibernate.engine.jdbc.env.spi.JdbcEnvironment] due to: Error calling Driver#connect [Database may be already in use: "C:/Users/zhenya/IdeaProjects/media-chameleon/data/data.mv.db". Possible solutions: close all other connection(s); use the server mode [90020-224]] [null]
+2024-05-31 21:43:35 ERROR MainMenuFactory:17 - 
+/C:/Users/zhenya/IdeaProjects/media-chameleon/target/classes/pages/main/ConverterMenu.fxml
+
+2024-05-31 21:44:29 ERROR MainMenuFactory:17 - 
+/C:/Users/zhenya/IdeaProjects/media-chameleon/target/classes/pages/main/ConverterMenu.fxml
+
+2024-05-31 21:45:27 ERROR MainMenuFactory:17 - 
+/C:/Users/zhenya/IdeaProjects/media-chameleon/target/classes/pages/main/ConverterMenu.fxml
+
+2024-06-02 11:16:08 ERROR HibernateUtil:25 - Collection 'com.therotherithethethe.persistance.entity.Session.files' is 'mappedBy' a property named 'session' which does not exist in the target entity 'com.therotherithethethe.persistance.entity.File'
+2024-06-02 11:20:06 ERROR SqlExceptionHelper:150 - Database may be already in use: "C:/Users/zhenya/IdeaProjects/media-chameleon/data/data.mv.db". Possible solutions: close all other connection(s); use the server mode [90020-224]
+2024-06-02 11:20:06 ERROR SqlExceptionHelper:150 - Database may be already in use: "C:/Users/zhenya/IdeaProjects/media-chameleon/data/data.mv.db". Possible solutions: close all other connection(s); use the server mode [90020-224]
+2024-06-02 11:20:06 ERROR HibernateUtil:25 - Unable to create requested service [org.hibernate.engine.jdbc.env.spi.JdbcEnvironment] due to: Error calling Driver#connect [Database may be already in use: "C:/Users/zhenya/IdeaProjects/media-chameleon/data/data.mv.db". Possible solutions: close all other connection(s); use the server mode [90020-224]] [null]
+2024-06-02 11:20:06 ERROR HibernateUtil:25 - Unable to create requested service [org.hibernate.engine.jdbc.env.spi.JdbcEnvironment] due to: Error calling Driver#connect [Database may be already in use: "C:/Users/zhenya/IdeaProjects/media-chameleon/data/data.mv.db". Possible solutions: close all other connection(s); use the server mode [90020-224]] [null]

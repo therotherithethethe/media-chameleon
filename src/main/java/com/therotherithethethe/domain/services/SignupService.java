@@ -7,30 +7,30 @@ import lombok.Getter;
 /**
  * Service implementation for handling signup operations.
  */
-public class SignupServiceImpl {
-    private static SignupServiceImpl instance;
+public class SignupService {
+    private static SignupService instance;
     public Account curAcc;
     @Getter
     private int validationCode;
     /**
-     * Constructs a SignupServiceImpl with the specified account.
+     * Constructs a SignupService with the specified account.
      *
      * @param account the account to associate with this service
      */
-    private SignupServiceImpl(Account account){
+    private SignupService(Account account){
         curAcc = account;
     }
     // Private constructor to prevent instantiation
-    private SignupServiceImpl(){
+    private SignupService(){
     }
     /**
-     * Gets the singleton instance of the SignupServiceImpl.
+     * Gets the singleton instance of the SignupService.
      *
-     * @return the singleton instance of SignupServiceImpl
+     * @return the singleton instance of SignupService
      */
-    public static synchronized SignupServiceImpl getInstance() {
+    public static synchronized SignupService getInstance() {
         if(instance == null) {
-            instance = new SignupServiceImpl();
+            instance = new SignupService();
             return instance;
         }
         return instance;
@@ -40,7 +40,7 @@ public class SignupServiceImpl {
      */
     public void sendEmail() {
         validationCode = generateCode();
-        //EmailSender.sendEmail(curAcc.email, "Email verification", String.valueOf(validationCode));
+        EmailSender.sendEmail(curAcc.email, "Email verification", String.valueOf(validationCode));
         System.out.println(validationCode);
     }
     /**

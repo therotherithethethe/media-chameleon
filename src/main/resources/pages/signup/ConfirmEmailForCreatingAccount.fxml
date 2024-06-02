@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane fx:id="mainAncPane" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" stylesheets="@../../styles/SignupMenuStyles.css" HBox.hgrow="ALWAYS" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.therotherithethethe.presentation.controllers.signup.ConfirmEmailForCreatingAccountController">
+  <children>
+    <VBox alignment="CENTER" fillWidth="false" layoutX="99.0" minHeight="0.0" minWidth="0.0" spacing="20.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+      <children>
+        <Label text="Enter">
+          <font>
+            <Font name="System Bold" size="43.0" />
+          </font>
+        </Label>
+        <Label text="The code was sent to your e-mail">
+          <VBox.margin>
+            <Insets top="-25.0" />
+          </VBox.margin>
+          <font>
+            <Font size="21.0" />
+          </font>
+        </Label>
+            <GridPane>
+              <columnConstraints>
+                <ColumnConstraints hgrow="SOMETIMES" />
+                <ColumnConstraints hgrow="SOMETIMES" />
+              </columnConstraints>
+              <rowConstraints>
+                <RowConstraints vgrow="SOMETIMES" />
+              </rowConstraints>
+               <children>
+                  <Label fx:id="timerLbl">
+                     <font>
+                        <Font name="System Bold" size="28.0" />
+                     </font>
+                  </Label>
+                  <Label maxWidth="1.7976931348623157E308" text=" sec" GridPane.columnIndex="1">
+                     <font>
+                        <Font name="System Bold Italic" size="28.0" />
+                     </font>
+                  </Label>
+               </children>
+               <VBox.margin>
+                  <Insets top="-10.0" />
+               </VBox.margin>
+            </GridPane>
+        <TextField fx:id="verificationCodeTxtF" maxWidth="400.0" minWidth="100.0" prefWidth="300.0" promptText="Enter code">
+          <VBox.margin>
+            <Insets />
+          </VBox.margin>
+        </TextField>
+            <BorderPane prefHeight="25.0" prefWidth="307.0">
+               <center>
+              <Button fx:id="confirmAccountBtn" onAction="#confirmAccountBtnClick" mnemonicParsing="false" prefHeight="25.0" prefWidth="118.0" text="Confirm" BorderPane.alignment="CENTER" />
+               </center>
+            </BorderPane>
+            <Button fx:id="resendCodeBtn" onAction="#resendCodeBtnClick" contentDisplay="CENTER" disable="true" mnemonicParsing="false" styleClass="transparent-button" text="Resend code" textFill="#5c72ee">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
+               <VBox.margin>
+                  <Insets top="-8.0" />
+               </VBox.margin></Button>
+            <Button fx:id="returnRegisterMenuBtn" contentDisplay="CENTER" mnemonicParsing="false" onAction="#returnRegisterMenuBtnClick" styleClass="transparent-button" text="Return to register menu" textFill="#5c72ee">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
+               <VBox.margin>
+                  <Insets top="-20.0" />
+               </VBox.margin>
+            </Button>
+      </children>
+    </VBox>
+  </children>
+</AnchorPane>

@@ -62,7 +62,8 @@ public class SignupMenuFactory {
         try {
             AnchorPane confirmPane = FXMLLoader.load(
                 Objects.requireNonNull(
-                    SignupMenuFactory.class.getResource("/pages/signup/ConfirmEmail.fxml")));
+                    SignupMenuFactory.class.getResource(
+                        "/pages/signup/ConfirmEmailForCreatingAccount.fxml")));
 
             HBox.setHgrow(confirmPane, Priority.SOMETIMES);
             paneToAdd.getChildren().add(confirmPane);
@@ -79,16 +80,30 @@ public class SignupMenuFactory {
      * @param paneToAdd the pane to add the confirm new password menu to
      * @return the added confirm new password menu
      */
-    public static AnchorPane addConfirmNewPassMenu(Pane paneToAdd) {
+    public static AnchorPane addConfirmEmailForChangePassword(Pane paneToAdd) {
         try {
             AnchorPane newPassword = FXMLLoader.load(
                 Objects.requireNonNull(
-                    SignupMenuFactory.class.getResource("/pages/signup/NewPassword.fxml")));
+                    SignupMenuFactory.class.getResource("/pages/signup/ConfirmEmailForChangePassword.fxml")));
 
             HBox.setHgrow(newPassword, Priority.SOMETIMES);
             paneToAdd.getChildren().add(newPassword);
             return newPassword;
 
+        } catch (IOException e) {
+            e.printStackTrace();
+            return null;
+        }
+    }
+    public static AnchorPane addChangePasswordMenu(Pane paneToAdd) {
+        try {
+            AnchorPane loginPane = FXMLLoader.load(
+                Objects.requireNonNull(
+                    SignupMenuFactory.class.getResource("/pages/signup/ChangePassword.fxml")));
+
+            HBox.setHgrow(loginPane, Priority.SOMETIMES);
+            paneToAdd.getChildren().add(loginPane);
+            return loginPane;
         } catch (IOException e) {
             e.printStackTrace();
             return null;

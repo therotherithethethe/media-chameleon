@@ -11,5 +11,7 @@
     <property name="hibernate.hbm2ddl.auto">update</property>
     <!--<property name="hibernate.connection.autocommit">true</property>-->
     <mapping class="com.therotherithethethe.persistance.entity.Account"/>
+    <mapping class="com.therotherithethethe.persistance.entity.Session"/>
+    <mapping class="com.therotherithethethe.persistance.entity.File"/>
   </session-factory>
 </hibernate-configuration>

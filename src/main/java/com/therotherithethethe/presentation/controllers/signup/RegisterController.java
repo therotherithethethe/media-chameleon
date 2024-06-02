@@ -8,7 +8,7 @@ import com.therotherithethethe.domain.validation.account.username.UsernameCharac
 import com.therotherithethethe.domain.validation.account.username.UsernameConsecutiveSymbolValidationHandler;
 import com.therotherithethethe.domain.validation.account.username.UsernameLengthValidationHandler;
 import com.therotherithethethe.domain.services.AccountService;
-import com.therotherithethethe.domain.services.SignupServiceImpl;
+import com.therotherithethethe.domain.services.SignupService;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
@@ -64,7 +64,7 @@ public class RegisterController implements Initializable {
     private void handleConfirmMenu(ActionEvent event) {
         var account = new Account(null, usernameTxtF.getText(), emailTxtF.getText(),
             passwordPassF.getText());
-        SignupServiceImpl signupService = SignupServiceImpl.getInstance();
+        SignupService signupService = SignupService.getInstance();
         signupService.curAcc = account;
 
         if (accountService.isExistInDb(account)) {

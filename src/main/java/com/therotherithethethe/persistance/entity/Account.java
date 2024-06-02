@@ -3,6 +3,11 @@ package com.therotherithethethe.persistance.entity;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToMany;
+import jakarta.persistence.OneToOne;
+import java.util.List;
 import java.util.UUID;
 import lombok.Getter;
 import lombok.Setter;
@@ -22,6 +27,10 @@ public class Account extends ActiveRecordBase<Account> implements Model, Compara
     private UUID id;
     @Getter
     private int password;
+    @OneToMany(mappedBy = "account")
+    @Getter
+    @Setter
+    public List<Session> session;
 
     /**
      * Constructs an account with the specified ID, name, email, and password.

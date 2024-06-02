@@ -1,0 +1,28 @@
+.custom-checkbox {
+  -fx-background-color: transparent;
+  -fx-border-color: rgb(189, 189, 189);
+  -fx-border-radius: 5;
+  -fx-background-radius: 5;
+  -fx-background-insets: 0;
+  -fx-padding: 0;
+}
+
+.custom-checkbox .box {
+  -fx-background-color: rgba(255, 0, 0, 0);
+  -fx-background-insets: 0;
+  -fx-padding: 0;
+}
+
+.custom-checkbox:selected {
+  -fx-background-color: rgba(0, 102, 255, 0.4);
+}
+
+.custom-checkbox:selected .box,
+.custom-checkbox:indeterminate .box {
+  -fx-background-color: transparent;
+}
+
+.custom-checkbox:selected .mark,
+.custom-checkbox:indeterminate .mark {
+  -fx-background-color: transparent;
+}

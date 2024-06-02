@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<fx:root alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="60.0" minWidth="60.0" mnemonicParsing="false" prefHeight="130.0" prefWidth="130.0" styleClass="custom-checkbox" stylesheets="@../styles/TestCss.css" type="CheckBox" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1">
+      <graphic>
+         <VBox alignment="BOTTOM_CENTER">
+            <children>
+               <ImageView fx:id="contentImageImgView" fitHeight="100.0" fitWidth="100.0" pickOnBounds="true" preserveRatio="true" VBox.vgrow="NEVER">
+                  <viewport>
+                     <Rectangle2D />
+                  </viewport>
+                  <VBox.margin>
+                     <Insets />
+                  </VBox.margin>
+               </ImageView>
+               <Label fx:id="fileNameLbl" alignment="CENTER" contentDisplay="CENTER" text="asdasdadadadasdasd" />
+               <Label fx:id="fileCreationDateLbl" text="date">
+               <font>
+                  <Font size="10.0" />
+               </font></Label>
+            </children>
+            <padding>
+               <Insets right="10.0" />
+            </padding>
+         </VBox>
+      </graphic>
+</fx:root>

@@ -1,9 +1,9 @@
 package com.therotherithethethe.presentation.controllers.signup;
 
+import com.therotherithethethe.domain.services.SignupService;
 import com.therotherithethethe.presentation.controllers.main.MainMenuFactory;
 import com.therotherithethethe.persistance.entity.Account;
 import com.therotherithethethe.domain.services.AccountService;
-import com.therotherithethethe.domain.services.SignupServiceImpl;
 import java.net.URL;
 import java.util.Optional;
 import java.util.ResourceBundle;
@@ -35,6 +35,7 @@ public class LoginController implements Initializable {
     @FXML
     public Button forgotPassBtn;
     private final AccountService accService = AccountService.getInstance();
+    private final SignupService signupService = SignupService.getInstance();
     /**
      * Initializes the controller class.
      *
@@ -69,7 +70,7 @@ public class LoginController implements Initializable {
             .findByColumn(acc -> acc.name.equals(nameOrEmail) || acc.email.equals(nameOrEmail))
             .getFirst();
 
-        SignupServiceImpl signupService = SignupServiceImpl.getInstance();
+        SignupService signupService = SignupService.getInstance();
         signupService.curAcc = foundedAccount;
         signupService.sendEmail();
         Pane pane = (Pane) mainAncPane.getParent();
@@ -77,10 +78,10 @@ public class LoginController implements Initializable {
 
         /*FXMLLoader fxmlLoader = new FXMLLoader(getClass()
             .getClassLoader()
-            .getResource("/pages/signup/ConfirmEmail.fxml"));
+            .getResource("/pages/signup/ConfirmEmailForCreatingAccount.fxml"));
 
         fxmlLoader.setController(new ConfirmEmailForChangePassController());*/
-        SignupMenuFactory.addConfirmMenu(pane);
+        SignupMenuFactory.addConfirmEmailForChangePassword(pane);
     }
     /**
      * Checks account credentials for login.
@@ -88,15 +89,20 @@ public class LoginController implements Initializable {
     private void checkAccountCredentials() {
         String usernameOrEmail = loginTxtF.getText();
         String password = passwordTxtF.getText();
-        var account = getAccount(usernameOrEmail);
+        var optionalAccount = getAccount(usernameOrEmail);
 
-        boolean isAccInDb = account.stream().findFirst().isPresent();
-        if(isAccInDb && password.hashCode() == account.get().getPassword()) {
-            setMainMenu();
-            return;
+        boolean isAccInDb = optionalAccount.isPresent();
+        if(isAccInDb) {
+            var foundAcc = optionalAccount.get();
+            if(password.hashCode() == foundAcc.getPassword()) {
+                signupService.curAcc = foundAcc;
+                setMainMenu();
+                return;
+            }
+
         }
         Alert alert = new Alert(AlertType.ERROR);
-        alert.setContentText("Error. Credentials are invalid or account is missing");
+        alert.setContentText("Error. Credentials are invalid or optionalAccount is missing");
         alert.showAndWait();
     }
     /**

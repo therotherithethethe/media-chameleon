@@ -1,7 +1,6 @@
 package com.therotherithethethe.presentation.controllers.signup;
 
-import com.therotherithethethe.presentation.controllers.main.MainMenuFactory;
-import com.therotherithethethe.domain.services.SignupServiceImpl;
+import com.therotherithethethe.domain.services.SignupService;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.application.Platform;
@@ -9,8 +8,6 @@ import javafx.concurrent.Task;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
@@ -18,11 +15,11 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
-import javafx.stage.Stage;
+
 /**
  * Controller class for the confirm email view.
  */
-public class ConfirmEmailController implements Initializable {
+public class ConfirmEmailForChangePasswordController implements Initializable {
 
     @FXML
     public Button returnRegisterMenuBtn;
@@ -44,22 +41,22 @@ public class ConfirmEmailController implements Initializable {
     @FXML
     public void confirmAccountBtnClick(ActionEvent event) {
         Alert alert;
-        SignupServiceImpl signupService = SignupServiceImpl.getInstance();
-        if(signupService.getValidationCode() == Integer.parseInt(verificationCodeTxtF.getText())) {
-            alert = new Alert(AlertType.CONFIRMATION);
-            alert.setContentText("Thanks for registering.");
-            alert.showAndWait();
-            signupService.curAcc.save();
-            Parent mainMenu = MainMenuFactory.getMainMenu();
-            Stage mainStage = (Stage) mainAncPane.getScene().getWindow();
-            Scene scene = new Scene(mainMenu);
-            mainStage.setScene(scene);
-            return;
+        SignupService signupService = SignupService.getInstance();
+        try {
+            if(signupService.getValidationCode() == Integer.parseInt(verificationCodeTxtF.getText())) {
+                Pane pane = (Pane) mainAncPane.getParent();
+                pane.getChildren().removeLast();
+                SignupMenuFactory.addChangePasswordMenu(pane);
+                return;
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
         }
         alert = new Alert(AlertType.ERROR);
         alert.setContentText("Wrong code. returning.....");
         alert.showAndWait();
-        handleRegisterMenu();
+        handleLoginMenu();
+
 
     }
     /**
@@ -81,7 +78,7 @@ public class ConfirmEmailController implements Initializable {
     private void resendCodeBtnClick(ActionEvent event) {
         initializeTimer();
         resendCodeBtn.setDisable(true);
-        SignupServiceImpl signupService = SignupServiceImpl.getInstance();
+        SignupService signupService = SignupService.getInstance();
         signupService.sendEmail();
     }
     /**
@@ -130,15 +127,15 @@ public class ConfirmEmailController implements Initializable {
         } catch (IOException e) {
             e.printStackTrace();
         }*/
-        handleRegisterMenu();
+        handleLoginMenu();
     }
     /**
      * Handles the action to return to the register menu.
      */
-    private void handleRegisterMenu() {
+    private void handleLoginMenu() {
         Pane pane = (Pane) mainAncPane.getParent();
         pane.getChildren().removeLast();
-        SignupMenuFactory.addRegisterMenu(pane);
+        SignupMenuFactory.addLoginMenu(pane);
 
     }
 }
