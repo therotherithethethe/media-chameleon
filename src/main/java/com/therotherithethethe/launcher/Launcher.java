@@ -1,6 +1,7 @@
 package com.therotherithethethe.launcher;
 
 import com.therotherithethethe.domain.utils.HibernateUtil;
+import com.therotherithethethe.persistance.entity.InitializationSettings;
 import java.util.Objects;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
@@ -49,5 +50,10 @@ public class Launcher extends Application {
         Scene scene = new Scene(root);
         primaryStage.setScene(scene);
         primaryStage.show();
+    }
+
+    @Override
+    public void stop() throws Exception {
+        InitializationSettings.getInstance().serialize();
     }
 }

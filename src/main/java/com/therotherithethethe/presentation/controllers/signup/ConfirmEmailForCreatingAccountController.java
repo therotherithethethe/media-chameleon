@@ -3,6 +3,7 @@ package com.therotherithethethe.presentation.controllers.signup;
 import com.therotherithethethe.domain.services.SignupService;
 import com.therotherithethethe.presentation.controllers.main.MainMenuFactory;
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.ResourceBundle;
 import javafx.application.Platform;
 import javafx.concurrent.Task;
@@ -49,6 +50,7 @@ public class ConfirmEmailForCreatingAccountController implements Initializable {
             alert = new Alert(AlertType.CONFIRMATION);
             alert.setContentText("Thanks for registering.");
             alert.showAndWait();
+            signupService.curAcc.session = new ArrayList<>();
             signupService.curAcc.save();
             Parent mainMenu = MainMenuFactory.getMainMenu();
             Stage mainStage = (Stage) mainAncPane.getScene().getWindow();

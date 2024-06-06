@@ -17,7 +17,9 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-
+/**
+ * Represents a user session.
+ */
 @Entity
 @NoArgsConstructor
 public class Session extends ActiveRecordBase<Session> implements Model {

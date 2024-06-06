@@ -1,28 +1,43 @@
 package com.therotherithethethe.presentation.controllers.main;
 
+import com.therotherithethethe.domain.services.FileService;
 import com.therotherithethethe.domain.services.SessionService;
 import com.therotherithethethe.domain.services.SignupService;
+import com.therotherithethethe.domain.services.converter.JpegConverter;
+import com.therotherithethethe.persistance.entity.Account;
+import com.therotherithethethe.persistance.entity.InitializationSettings;
 import com.therotherithethethe.presentation.customcontrols.ImageCheckBox;
 import java.awt.Graphics2D;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Objects;
+import java.util.Optional;
 import java.util.ResourceBundle;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+import java.util.concurrent.TimeUnit;
 import java.util.function.Consumer;
 import javafx.application.Platform;
 import javafx.concurrent.Task;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.Label;
+import javafx.scene.control.ProgressBar;
 import javafx.scene.control.TextField;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
@@ -30,6 +45,8 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
+import javafx.stage.DirectoryChooser;
+import javafx.stage.Stage;
 import javax.imageio.IIOImage;
 import javax.imageio.ImageIO;
 import javax.imageio.ImageWriteParam;
@@ -37,14 +54,13 @@ import javax.imageio.ImageWriter;
 import javax.imageio.stream.ImageOutputStream;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-
+/**
+ * Controller class for the converter menu.
+ */
 public class ConverterMenuController implements Initializable {
 
     @FXML
     public FlowPane imageContainerFlowPane;
-    @FXML
-    public Button addNewButtonToHboxBtn;
-    private final Logger LOGGER = LoggerFactory.getLogger(ConverterMenuController.class);
     @FXML
     public TextField directoryPathTextF;
     @FXML
@@ -59,6 +75,19 @@ public class ConverterMenuController implements Initializable {
     public Button reloadImagesBtn;
     private final SessionService sessionService = SessionService.getInstance();
     private final SignupService signupService = SignupService.getInstance();
+    private final FileService fileService = FileService.getInstance();
+    @FXML
+    public ProgressBar imageConvertationStateProgressBar;
+    @FXML
+    public Button convertImagesBtn;
+    @FXML
+    public Button deleteAccountBtn;
+    @FXML
+    public Button openDirectoryBtn;
+    @FXML
+    public TextField findByNameTextField;
+    @FXML
+    public Button logoutBtn;
     Task<Void> loadImagesTask = null;
 
     private static final int RESIZE_MARGIN = 10;
@@ -66,12 +95,20 @@ public class ConverterMenuController implements Initializable {
     private boolean isResizingBottom;
     private double clickOffsetX;
     private double clickOffsetY;
-
+    InitializationSettings initializationSettings = InitializationSettings.getInstance();
+    /**
+     * Initializes the controller.
+     * @param url The location used to resolve relative paths for the root object.
+     * @param resourceBundle The resources used to localize the root object.
+     */
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        String initializePath = "C:\\Users\\zhenya\\Downloads\\TestFolder";
+        String initializePath = initializationSettings.initializeDirectory;
         initializePathAndImages(initializePath);
+        var optionalAccount = new Account().findByColumn(ac -> ac.name.equals(signupService.curAcc.name)).stream().findFirst();
+        signupService.curAcc = optionalAccount.get();
         sessionService.createSession(signupService.curAcc);
+        accountNameLbl.setText(signupService.curAcc.name);
     }
 
     private void initializePathAndImages(String initializePath) {
@@ -81,7 +118,21 @@ public class ConverterMenuController implements Initializable {
         directoryPathTextF.textProperty().addListener((observable, oldValue, newValue) -> {
             if (!oldValue.equals(newValue)) {
                 updateImageLoading(newValue);
+                initializationSettings.initializeDirectory = newValue;
             }
+        });
+
+        findByNameTextField.textProperty().addListener((_, _, newValue) -> {
+            filterImages(newValue);
+        });
+    }
+
+    private void filterImages(String filename) {
+        imageContainerFlowPane.getChildren().stream().map(ImageCheckBox.class::cast).forEach(el -> {
+            boolean isNameMatches = el.fileNameLbl.getText().toLowerCase()
+                .contains(filename.toLowerCase());
+            el.setVisible(isNameMatches);
+            el.setManaged(isNameMatches);
         });
     }
 
@@ -127,85 +178,9 @@ public class ConverterMenuController implements Initializable {
         new Thread(loadImagesTask).start();
     }
 
-    public void convertToJpeg(File inputFile, File outputFile) throws IOException {
-        // Read the input image
-        BufferedImage inputImage = ImageIO.read(inputFile);
-
-        // Remove alpha channel if it exists
-        BufferedImage processedImage = removeAlphaChannel(inputImage);
-
-        // Get a JPEG writer
-        Iterator<ImageWriter> writers = ImageIO.getImageWritersByFormatName("jpg");
-        if (!writers.hasNext()) {
-            throw new IllegalStateException("No writers found for JPEG format.");
-        }
-        ImageWriter writer = writers.next();
-
-        // Set up the output stream
-        ImageOutputStream ios = ImageIO.createImageOutputStream(outputFile);
-        writer.setOutput(ios);
-
-        // Set the compression quality
-        ImageWriteParam param = writer.getDefaultWriteParam();
-        if (param.canWriteCompressed()) {
-            param.setCompressionMode(ImageWriteParam.MODE_EXPLICIT);
-            param.setCompressionQuality(0.5f);  // 50% compression
-        }
-
-        // Write the image
-        writer.write(null, new IIOImage(processedImage, null, null), param);
-
-        // Cleanup
-        ios.close();
-        writer.dispose();
-    }
-
-    private BufferedImage removeAlphaChannel(BufferedImage img) {
-        if (!img.getColorModel().hasAlpha()) {
-            return img;
-        }
-
-        BufferedImage target = createImage(img.getWidth(), img.getHeight(), false);
-        Graphics2D g = target.createGraphics();
-        g.fillRect(0, 0, img.getWidth(), img.getHeight());
-        g.drawImage(img, 0, 0, null);
-        g.dispose();
-        return target;
-    }
-
-    private BufferedImage createImage(int width, int height, boolean hasAlpha) {
-        return new BufferedImage(width, height,
-            hasAlpha ? BufferedImage.TYPE_INT_ARGB : BufferedImage.TYPE_INT_RGB);
-    }
-
-    private File createOutputFile(File inputFile) {
-        String newFileName = generateNewFileName(inputFile);
-        return new File(inputFile.getParent(), newFileName);
-    }
-
-    private String generateNewFileName(File inputFile) {
-        String originalFileName = inputFile.getName();
-        String baseName = originalFileName.replaceAll("\\.[^.]+$", "");
-        String extension = ".jpg";
-        String newFileName = baseName + extension;
-
-        File newFile = new File(inputFile.getParent(), newFileName);
-        if (newFile.exists()) {
-            newFileName = baseName + "__new" + extension;
-            newFile = new File(inputFile.getParent(), newFileName);
-
-            int counter = 1;
-            while (newFile.exists()) {
-                newFileName = baseName + "__new(" + counter + ")" + extension;
-                newFile = new File(inputFile.getParent(), newFileName);
-                counter++;
-            }
-        }
-        return newFileName;
-    }
 
     @FXML
-    private void convert(ActionEvent ev) {
+    private void convertImagesBtn_Click(ActionEvent ev) {
         List<ImageCheckBox> selectedCheckBoxes = new java.util.ArrayList<>(
             imageContainerFlowPane.getChildren().stream()
                 .map(ImageCheckBox.class::cast)
@@ -214,18 +189,71 @@ public class ConverterMenuController implements Initializable {
 
         Collections.reverse(selectedCheckBoxes);
 
-        selectedCheckBoxes.forEach(inputCheckBox -> {
-            File inputFile = new File(inputCheckBox.getFullPath());
-            File outputFile = createOutputFile(inputFile);
+        new Thread(() -> {
+            produceConvertation(selectedCheckBoxes);
+        }).start();
+    }
 
-            try {
-                convertToJpeg(inputFile, outputFile);
-                ImageCheckBox newCheckBox = new ImageCheckBox(outputFile.getPath());
-                imageContainerFlowPane.getChildren().add(newCheckBox);
-            } catch (IOException e) {
-                throw new RuntimeException("Failed to convert file: " + inputFile.getPath(), e);
-            }
-        });
+    private void produceConvertation(List<ImageCheckBox> selectedCheckBoxes) {
+        Platform.runLater(() -> imageConvertationStateProgressBar.setProgress(0d));
+
+        int numThreads = Runtime.getRuntime().availableProcessors();
+        int chunkSize = (int) Math.ceil((double) selectedCheckBoxes.size() / numThreads);
+        double deltaProgress = 1.0 / selectedCheckBoxes.size();
+
+        ExecutorService executorService = Executors.newFixedThreadPool(numThreads);
+        List<List<ImageCheckBox>> chunks = new ArrayList<>();
+
+        for (int i = 0; i < selectedCheckBoxes.size(); i += chunkSize) {
+            int end = Math.min(selectedCheckBoxes.size(), i + chunkSize);
+            chunks.add(selectedCheckBoxes.subList(i, end));
+        }
+
+        for (List<ImageCheckBox> chunk : chunks) {
+            executorService.submit(() -> {
+                for (ImageCheckBox inputCheckBox : chunk) {
+                    String fullPath = inputCheckBox.getFullPath();
+                    File inputFile = new File(fullPath);
+                    File outputFile = JpegConverter.createOutputFile(inputFile);
+
+                    Optional<com.therotherithethethe.persistance.entity.File> optionalFile = fileService.getFileByPath(fullPath);
+                    com.therotherithethethe.persistance.entity.File file = optionalFile.orElseGet(
+                        () -> new com.therotherithethethe.persistance.entity.File(null, fullPath));
+
+                    file.save();
+                    sessionService.saveSession(file);
+
+                    try {
+                        JpegConverter.convertToJpeg(inputFile, outputFile);
+
+                        ImageCheckBox newCheckBox = new ImageCheckBox(outputFile.getPath());
+
+                        Platform.runLater(() -> {
+                            imageContainerFlowPane.getChildren().add(newCheckBox);
+                            imageConvertationStateProgressBar.setProgress(imageConvertationStateProgressBar.getProgress() + deltaProgress);
+                        });
+
+                    } catch (Exception e) {
+                        Platform.runLater(() -> {
+                            Alert alert = new Alert(Alert.AlertType.ERROR);
+                            alert.setTitle("Conversion Error");
+                            alert.setHeaderText("Failed to convert file");
+                            alert.setContentText("An error occurred while converting: " + inputFile.getPath());
+                            alert.showAndWait();
+                        });
+
+                        throw new RuntimeException("Failed to convert file: " + inputFile.getPath(), e);
+                    }
+                }
+            });
+        }
+
+        executorService.shutdown();
+        try {
+            executorService.awaitTermination(Long.MAX_VALUE, TimeUnit.NANOSECONDS);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
     }
 
     @FXML
@@ -237,6 +265,11 @@ public class ConverterMenuController implements Initializable {
             }
             forEachForAllCheckBoxes(el -> el.setSelected(true));
         }
+        if(event.getCode() == KeyCode.DELETE) {
+            imageContainerFlowPane.getChildren().stream().map(ImageCheckBox.class::cast).filter(ImageCheckBox::isSelected)
+                .forEach(el -> deleteImage(el));
+        }
+
     }
 
 
@@ -335,5 +368,67 @@ public class ConverterMenuController implements Initializable {
     private void reloadImagesBtn_Click(ActionEvent event) {
         imageContainerFlowPane.getChildren().clear();
         loadImagesAsync(directoryPathTextF.getText());
+    }
+
+    public void deleteAccountBtn_Click(ActionEvent event) {
+        signupService.curAcc.delete();
+        try {
+            Alert alert = new Alert(AlertType.CONFIRMATION);
+            alert.setContentText("Account deleted!");
+            alert.showAndWait();
+            setMainMenu();
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+    }
+    private void setMainMenu() throws IOException {
+        Parent root =
+            FXMLLoader.load(
+                Objects.requireNonNull(
+                    getClass().getClassLoader().getResource("pages/signup/SignupMenu.fxml")));
+
+        Stage mainStage = (Stage) imageContainerFlowPane.getScene().getWindow();
+        Scene scene = new Scene(root);
+        mainStage.setScene(scene);
+    }
+
+    public void openDirectoryBtn_Click(ActionEvent event) {
+        chooseDirectory();
+    }
+
+    private void chooseDirectory() {
+        String pathname = directoryPathTextF.getText();
+        openDirectoryChooser(pathname);
+    }
+
+    private void openDirectoryChooser(String pathname) {
+        DirectoryChooser directoryChooser = new DirectoryChooser();
+        directoryChooser.setTitle("Choose directory with images");
+
+        directoryChooser.setInitialDirectory(new File(pathname));
+
+        try {
+            String path = directoryChooser.showDialog(convertImagesBtn.getScene().getWindow())
+                .getPath();
+            directoryPathTextF.setText(path);
+        } catch (IllegalArgumentException e) {
+            Alert alert = new Alert(AlertType.ERROR);
+            alert.setContentText(STR."error opening a \{pathname} directory");
+            alert.showAndWait();
+            openDirectoryChooser("C:\\");
+        }
+    }
+    private void deleteImage(ImageCheckBox imageCheckBox) {
+        imageCheckBox.deleteFile();
+        Platform.runLater(() -> imageContainerFlowPane.getChildren().remove(imageCheckBox));
+
+    }
+
+    public void logoutBtn_Click(ActionEvent event) {
+        try {
+            setMainMenu();
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
     }
 }

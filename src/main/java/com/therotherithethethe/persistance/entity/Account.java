@@ -1,6 +1,8 @@
 package com.therotherithethethe.persistance.entity;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
@@ -16,7 +18,6 @@ import lombok.ToString;
 /**
  * Account entity class.
  */
-@ToString
 @Entity
 public class Account extends ActiveRecordBase<Account> implements Model, Comparable<Account> {
 
@@ -27,7 +28,7 @@ public class Account extends ActiveRecordBase<Account> implements Model, Compara
     private UUID id;
     @Getter
     private int password;
-    @OneToMany(mappedBy = "account")
+    @OneToMany(mappedBy = "account",  cascade = CascadeType.ALL, orphanRemoval = true)
     @Getter
     @Setter
     public List<Session> session;

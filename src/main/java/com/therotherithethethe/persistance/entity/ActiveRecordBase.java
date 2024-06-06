@@ -2,6 +2,7 @@ package com.therotherithethethe.persistance.entity;
 
 import com.therotherithethethe.domain.utils.HibernateUtil;
 import jakarta.persistence.TypedQuery;
+import jakarta.transaction.Transactional;
 import java.util.Collections;
 import java.util.List;
 import java.util.Objects;
@@ -58,8 +59,8 @@ public abstract class ActiveRecordBase<T extends Model> {
             }
             transaction.commit();
             return true;
-        } catch (HibernateException ex) {
-            // TODO: use logger
+        } catch (Exception ex) {
+            ex.printStackTrace();
             return false;
         }
     }
@@ -98,11 +99,13 @@ public abstract class ActiveRecordBase<T extends Model> {
 
 
     public void delete() {
-        Session session = sessionFactory.openSession();
-        Transaction tx = session.beginTransaction();
-        session.remove(this);
-        tx.commit();
-        session.close();
+        try (Session session = sessionFactory.openSession()) {
+            Transaction tx = session.beginTransaction();
+            session.remove(this);
+            tx.commit();
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
     }
     /**
      * Finds an entity by its ID.

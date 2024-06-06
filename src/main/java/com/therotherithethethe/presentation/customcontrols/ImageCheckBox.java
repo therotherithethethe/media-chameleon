@@ -17,6 +17,10 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import lombok.Getter;
 
+/**
+ * Represents a custom CheckBox control that displays an image along with file information.
+ * This control extends the standard CheckBox class.
+ */
 public class ImageCheckBox extends CheckBox {
 
     public static double width = 100;
@@ -30,19 +34,39 @@ public class ImageCheckBox extends CheckBox {
     @Getter
     private String fullPath;
 
+    /**
+     * Constructs an ImageCheckBox with the specified file path, width, and height.
+     *
+     * @param filePath The path of the image file to be displayed.
+     * @param width    The width of the image.
+     * @param height   The height of the image.
+     * @throws IOException If an I/O error occurs.
+     */
     public ImageCheckBox(String filePath, double width, double height) throws IOException {
         initializeFxml();
         initializeInformation(filePath, width, height);
     }
+    /**
+     * Constructs an ImageCheckBox with the specified file path.
+     * Uses default width and height.
+     *
+     * @param filePath The path of the image file to be displayed.
+     * @throws IOException If an I/O error occurs.
+     */
     public ImageCheckBox(String filePath) throws IOException {
         initializeFxml();
         initializeInformation(filePath, ImageCheckBox.width, ImageCheckBox.height);
     }
-
+    /**
+     * Increases the size of the checkbox and its content by the specified width and height.
+     *
+     * @param width  The width to be added.
+     * @param height The height to be added.
+     */
     public void addSize(double width, double height) {
         if(getWidth() + width <= getMinWidth() || getHeight() + height <= getMinHeight())
             return;
-
+        
         this.setPrefWidth(this.getPrefWidth() + width);
         this.setPrefHeight(this.getPrefHeight() + height);
         contentImageImgView.setFitHeight(contentImageImgView.getFitHeight() + height);
@@ -86,5 +110,12 @@ public class ImageCheckBox extends CheckBox {
             System.err.println(exception.getMessage());
             throw new RuntimeException(exception);
         }
+    }
+
+    /**
+     * Deletes file for file that represents this control.
+     */
+    public void deleteFile() {
+        new File(fullPath).delete();
     }
 }

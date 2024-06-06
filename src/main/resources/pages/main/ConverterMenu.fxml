@@ -3,6 +3,7 @@
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ProgressBar?>
 <?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -70,6 +71,7 @@
                               <Button fx:id="increaseImageSizeBtn" mnemonicParsing="false" onAction="#increaseImageSizeBtn_Click" prefWidth="30.0" text="+" />
                            </children>
                         </HBox>
+                        <Button fx:id="openDirectoryBtn" mnemonicParsing="false" onAction="#openDirectoryBtn_Click" text="Open" AnchorPane.leftAnchor="2.0" />
                      </children>
                      <GridPane.margin>
                         <Insets bottom="2.0" />
@@ -79,26 +81,40 @@
             </GridPane>
          </top>
          <left>
-            <VBox fx:id="leftPanelVbox" maxHeight="600.0" maxWidth="600.0" minHeight="50.0" minWidth="50.0" onMouseDragged="#onMouseDragged" onMouseMoved="#onMouseMoved" onMousePressed="#onMousePressed" prefHeight="434.0" prefWidth="131.0" spacing="5.0" style="-fx-border-color: black; -fx-background-color: lightgrey;" BorderPane.alignment="CENTER">
+            <VBox fx:id="leftPanelVbox" maxHeight="1.7976931348623157E308" maxWidth="600.0" minHeight="50.0" minWidth="50.0" onMouseDragged="#onMouseDragged" onMouseMoved="#onMouseMoved" onMousePressed="#onMousePressed" prefHeight="434.0" prefWidth="131.0" spacing="10.0" BorderPane.alignment="CENTER">
                <children>
-                  <Label fx:id="" alignment="CENTER" contentDisplay="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308">
+                  <Label fx:id="accountNameLbl" alignment="CENTER" contentDisplay="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308">
                      <VBox.margin>
                         <Insets top="10.0" />
                      </VBox.margin>
                      <font>
                         <Font name="System Bold" size="16.0" />
                      </font></Label>
-                  <Button maxWidth="1.7976931348623157E308" mnemonicParsing="false" text="Settings">
+                  <Button fx:id="deleteAccountBtn" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#deleteAccountBtn_Click" text="Delete account">
                      <VBox.margin>
                         <Insets left="10.0" right="10.0" />
                      </VBox.margin></Button>
+                  <Button fx:id="logoutBtn" onAction="#logoutBtn_Click" maxWidth="1.7976931348623157E308" mnemonicParsing="false" text="Logout">
+                     <VBox.margin>
+                        <Insets left="10.0" right="10.0" />
+                     </VBox.margin>
+                  </Button>
                </children>
             </VBox>
          </left>
          <bottom>
             <AnchorPane prefWidth="706.0" BorderPane.alignment="CENTER">
                <children>
-                  <Button mnemonicParsing="false" onAction="#convert" text="Convert" AnchorPane.bottomAnchor="5.0" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="5.0" />
+                  <HBox maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" spacing="10.0" AnchorPane.bottomAnchor="5.0" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="5.0">
+                     <children>
+                        <ProgressBar fx:id="imageConvertationStateProgressBar" prefHeight="15.0" prefWidth="100.0" progress="0.0">
+                           <HBox.margin>
+                              <Insets top="5.0" />
+                           </HBox.margin>
+                        </ProgressBar>
+                        <Button fx:id="convertImagesBtn" mnemonicParsing="false" onAction="#convertImagesBtn_Click" text="Convert" />
+                     </children>
+                  </HBox>
                </children>
             </AnchorPane>
          </bottom>

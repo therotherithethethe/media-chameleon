@@ -1497,3 +1497,93 @@ insert into Session (account_id,dateTime,id) values (?,?,?) [23505-224]
 2024-06-02 11:20:06 ERROR SqlExceptionHelper:150 - Database may be already in use: "C:/Users/zhenya/IdeaProjects/media-chameleon/data/data.mv.db". Possible solutions: close all other connection(s); use the server mode [90020-224]
 2024-06-02 11:20:06 ERROR HibernateUtil:25 - Unable to create requested service [org.hibernate.engine.jdbc.env.spi.JdbcEnvironment] due to: Error calling Driver#connect [Database may be already in use: "C:/Users/zhenya/IdeaProjects/media-chameleon/data/data.mv.db". Possible solutions: close all other connection(s); use the server mode [90020-224]] [null]
 2024-06-02 11:20:06 ERROR HibernateUtil:25 - Unable to create requested service [org.hibernate.engine.jdbc.env.spi.JdbcEnvironment] due to: Error calling Driver#connect [Database may be already in use: "C:/Users/zhenya/IdeaProjects/media-chameleon/data/data.mv.db". Possible solutions: close all other connection(s); use the server mode [90020-224]] [null]
+2024-06-02 12:30:10 ERROR SqlExceptionHelper:150 - Database may be already in use: "C:/Users/zhenya/IdeaProjects/media-chameleon/data/data.mv.db". Possible solutions: close all other connection(s); use the server mode [90020-224]
+2024-06-02 12:30:10 ERROR SqlExceptionHelper:150 - Database may be already in use: "C:/Users/zhenya/IdeaProjects/media-chameleon/data/data.mv.db". Possible solutions: close all other connection(s); use the server mode [90020-224]
+2024-06-02 12:30:10 ERROR HibernateUtil:25 - Unable to create requested service [org.hibernate.engine.jdbc.env.spi.JdbcEnvironment] due to: Error calling Driver#connect [Database may be already in use: "C:/Users/zhenya/IdeaProjects/media-chameleon/data/data.mv.db". Possible solutions: close all other connection(s); use the server mode [90020-224]] [null]
+2024-06-02 12:30:10 ERROR HibernateUtil:25 - Unable to create requested service [org.hibernate.engine.jdbc.env.spi.JdbcEnvironment] due to: Error calling Driver#connect [Database may be already in use: "C:/Users/zhenya/IdeaProjects/media-chameleon/data/data.mv.db". Possible solutions: close all other connection(s); use the server mode [90020-224]] [null]
+2024-06-02 16:07:23 ERROR SqlExceptionHelper:150 - Database may be already in use: "C:/Users/zhenya/IdeaProjects/media-chameleon/data/data.mv.db". Possible solutions: close all other connection(s); use the server mode [90020-224]
+2024-06-02 16:07:23 ERROR SqlExceptionHelper:150 - Database may be already in use: "C:/Users/zhenya/IdeaProjects/media-chameleon/data/data.mv.db". Possible solutions: close all other connection(s); use the server mode [90020-224]
+2024-06-02 16:07:23 ERROR HibernateUtil:25 - Unable to create requested service [org.hibernate.engine.jdbc.env.spi.JdbcEnvironment] due to: Error calling Driver#connect [Database may be already in use: "C:/Users/zhenya/IdeaProjects/media-chameleon/data/data.mv.db". Possible solutions: close all other connection(s); use the server mode [90020-224]] [null]
+2024-06-02 16:07:23 ERROR HibernateUtil:25 - Unable to create requested service [org.hibernate.engine.jdbc.env.spi.JdbcEnvironment] due to: Error calling Driver#connect [Database may be already in use: "C:/Users/zhenya/IdeaProjects/media-chameleon/data/data.mv.db". Possible solutions: close all other connection(s); use the server mode [90020-224]] [null]
+2024-06-03 15:22:02 ERROR SqlExceptionHelper:150 - Referential integrity constraint violation: "FK1OM3EENM71NOIWOYPHOC4A3P7: PUBLIC.SESSION FOREIGN KEY(ACCOUNT_ID) REFERENCES PUBLIC.ACCOUNT(ID) (UUID '701a1192-c8b9-49b6-85e2-53614aa81424')"; SQL statement:
+delete from Account where id=? [23503-224]
+2024-06-03 15:22:21 ERROR SqlExceptionHelper:150 - Referential integrity constraint violation: "FK1OM3EENM71NOIWOYPHOC4A3P7: PUBLIC.SESSION FOREIGN KEY(ACCOUNT_ID) REFERENCES PUBLIC.ACCOUNT(ID) (UUID '701a1192-c8b9-49b6-85e2-53614aa81424')"; SQL statement:
+delete from Account where id=? [23503-224]
+2024-06-03 15:22:31 ERROR SqlExceptionHelper:150 - Referential integrity constraint violation: "FK1OM3EENM71NOIWOYPHOC4A3P7: PUBLIC.SESSION FOREIGN KEY(ACCOUNT_ID) REFERENCES PUBLIC.ACCOUNT(ID) (UUID '701a1192-c8b9-49b6-85e2-53614aa81424')"; SQL statement:
+delete from Account where id=? [23503-224]
+2024-06-03 15:25:19 ERROR SqlExceptionHelper:150 - Referential integrity constraint violation: "FK1OM3EENM71NOIWOYPHOC4A3P7: PUBLIC.SESSION FOREIGN KEY(ACCOUNT_ID) REFERENCES PUBLIC.ACCOUNT(ID) (UUID '701a1192-c8b9-49b6-85e2-53614aa81424')"; SQL statement:
+delete from Account where id=? [23503-224]
+2024-06-03 15:28:10 ERROR SqlExceptionHelper:150 - Database is already closed (to disable automatic closing at VM shutdown, add ";DB_CLOSE_ON_EXIT=FALSE" to the db URL) [90121-224]
+2024-06-03 15:28:46 ERROR SqlExceptionHelper:150 - Referential integrity constraint violation: "FK1OM3EENM71NOIWOYPHOC4A3P7: PUBLIC.SESSION FOREIGN KEY(ACCOUNT_ID) REFERENCES PUBLIC.ACCOUNT(ID) (UUID '701a1192-c8b9-49b6-85e2-53614aa81424')"; SQL statement:
+delete from Account where id=? [23503-224]
+2024-06-03 15:29:53 ERROR SqlExceptionHelper:150 - Referential integrity constraint violation: "FK1OM3EENM71NOIWOYPHOC4A3P7: PUBLIC.SESSION FOREIGN KEY(ACCOUNT_ID) REFERENCES PUBLIC.ACCOUNT(ID) (UUID '701a1192-c8b9-49b6-85e2-53614aa81424')"; SQL statement:
+delete from Account where id=? [23503-224]
+2024-06-03 15:30:07 ERROR SqlExceptionHelper:150 - Referential integrity constraint violation: "FK1OM3EENM71NOIWOYPHOC4A3P7: PUBLIC.SESSION FOREIGN KEY(ACCOUNT_ID) REFERENCES PUBLIC.ACCOUNT(ID) (UUID '701a1192-c8b9-49b6-85e2-53614aa81424')"; SQL statement:
+delete from Account where id=? [23503-224]
+2024-06-03 15:35:16 ERROR SqlExceptionHelper:150 - Referential integrity constraint violation: "FK1OM3EENM71NOIWOYPHOC4A3P7: PUBLIC.SESSION FOREIGN KEY(ACCOUNT_ID) REFERENCES PUBLIC.ACCOUNT(ID) (UUID 'a92a5207-49eb-4303-8abd-a2110517f16c')"; SQL statement:
+delete from Account where id=? [23503-224]
+2024-06-03 15:36:06 ERROR SqlExceptionHelper:150 - Referential integrity constraint violation: "FK1OM3EENM71NOIWOYPHOC4A3P7: PUBLIC.SESSION FOREIGN KEY(ACCOUNT_ID) REFERENCES PUBLIC.ACCOUNT(ID) (UUID 'dc044018-ae33-4146-b823-e98d803d1de9')"; SQL statement:
+delete from Account where id=? [23503-224]
+2024-06-03 16:00:01 ERROR SqlExceptionHelper:150 - Referential integrity constraint violation: "FK1OM3EENM71NOIWOYPHOC4A3P7: PUBLIC.SESSION FOREIGN KEY(ACCOUNT_ID) REFERENCES PUBLIC.ACCOUNT(ID) (UUID 'c97314ed-0575-4d2f-93e6-4679af90b1e8')"; SQL statement:
+delete from Account where id=? [23503-224]
+2024-06-03 16:01:24 ERROR SqlExceptionHelper:150 - Referential integrity constraint violation: "FK1OM3EENM71NOIWOYPHOC4A3P7: PUBLIC.SESSION FOREIGN KEY(ACCOUNT_ID) REFERENCES PUBLIC.ACCOUNT(ID) (UUID 'da40ec50-ea8e-4105-9313-55c12d0569c1')"; SQL statement:
+delete from Account where id=? [23503-224]
+2024-06-03 16:02:49 ERROR SqlExceptionHelper:150 - Referential integrity constraint violation: "FK1OM3EENM71NOIWOYPHOC4A3P7: PUBLIC.SESSION FOREIGN KEY(ACCOUNT_ID) REFERENCES PUBLIC.ACCOUNT(ID) (UUID 'e5fac328-1a51-4402-9204-c0904f6c1438')"; SQL statement:
+delete from Account where id=? [23503-224]
+2024-06-03 16:09:14 ERROR SqlExceptionHelper:150 - Referential integrity constraint violation: "FK1OM3EENM71NOIWOYPHOC4A3P7: PUBLIC.SESSION FOREIGN KEY(ACCOUNT_ID) REFERENCES PUBLIC.ACCOUNT(ID) (UUID '7a1c9d54-35e5-42c2-a44f-b4383e8314fe')"; SQL statement:
+delete from Account where id=? [23503-224]
+2024-06-03 16:32:33 ERROR SqlExceptionHelper:150 - Referential integrity constraint violation: "FK1OM3EENM71NOIWOYPHOC4A3P7: PUBLIC.SESSION FOREIGN KEY(ACCOUNT_ID) REFERENCES PUBLIC.ACCOUNT(ID) (UUID '3961e438-a4df-4066-a827-d63cdf167083')"; SQL statement:
+delete from Account where id=? [23503-224]
+2024-06-03 16:34:48 ERROR SqlExceptionHelper:150 - Referential integrity constraint violation: "FK1OM3EENM71NOIWOYPHOC4A3P7: PUBLIC.SESSION FOREIGN KEY(ACCOUNT_ID) REFERENCES PUBLIC.ACCOUNT(ID) (UUID 'fcc25978-9575-4723-868d-23b58e1d1d85')"; SQL statement:
+delete from Account where id=? [23503-224]
+2024-06-03 16:37:03 ERROR SqlExceptionHelper:150 - Referential integrity constraint violation: "FK1OM3EENM71NOIWOYPHOC4A3P7: PUBLIC.SESSION FOREIGN KEY(ACCOUNT_ID) REFERENCES PUBLIC.ACCOUNT(ID) (UUID '69fd6e23-e25a-40b1-94d8-a121dacf871a')"; SQL statement:
+delete from Account where id=? [23503-224]
+2024-06-03 16:41:44 ERROR SqlExceptionHelper:150 - The object is already closed [90007-224]
+2024-06-03 16:41:46 ERROR SqlExceptionHelper:150 - The object is already closed [90007-224]
+2024-06-03 16:41:53 ERROR SqlExceptionHelper:150 - The object is already closed [90007-224]
+2024-06-03 16:42:06 ERROR SqlExceptionHelper:150 - The object is already closed [90007-224]
+2024-06-03 16:42:26 ERROR SqlExceptionHelper:150 - Referential integrity constraint violation: "FK1OM3EENM71NOIWOYPHOC4A3P7: PUBLIC.SESSION FOREIGN KEY(ACCOUNT_ID) REFERENCES PUBLIC.ACCOUNT(ID) (UUID 'ab307607-9030-45fc-bb4e-6c9b59710411')"; SQL statement:
+delete from Account where id=? [23503-224]
+2024-06-03 16:42:46 ERROR SqlExceptionHelper:150 - The object is already closed [90007-224]
+2024-06-03 16:42:57 ERROR SqlExceptionHelper:150 - Referential integrity constraint violation: "FK1OM3EENM71NOIWOYPHOC4A3P7: PUBLIC.SESSION FOREIGN KEY(ACCOUNT_ID) REFERENCES PUBLIC.ACCOUNT(ID) (UUID '27f6967a-502a-4cdd-8649-96bedd364402')"; SQL statement:
+delete from Account where id=? [23503-224]
+2024-06-03 16:43:01 ERROR SqlExceptionHelper:150 - The object is already closed [90007-224]
+2024-06-03 16:43:04 ERROR SqlExceptionHelper:150 - The object is already closed [90007-224]
+2024-06-03 16:53:00 ERROR SqlExceptionHelper:150 - Database is already closed (to disable automatic closing at VM shutdown, add ";DB_CLOSE_ON_EXIT=FALSE" to the db URL) [90121-224]
+2024-06-03 16:56:55 ERROR SqlExceptionHelper:150 - Referential integrity constraint violation: "FK1OM3EENM71NOIWOYPHOC4A3P7: PUBLIC.SESSION FOREIGN KEY(ACCOUNT_ID) REFERENCES PUBLIC.ACCOUNT(ID) (UUID '257486a2-b5da-40a4-aee5-caaaf5b67c14')"; SQL statement:
+delete from Account where id=? [23503-224]
+2024-06-03 16:57:16 ERROR SqlExceptionHelper:150 - Database may be already in use: "C:/Users/zhenya/IdeaProjects/media-chameleon/data/data.mv.db". Possible solutions: close all other connection(s); use the server mode [90020-224]
+2024-06-03 16:57:16 ERROR SqlExceptionHelper:150 - Database may be already in use: "C:/Users/zhenya/IdeaProjects/media-chameleon/data/data.mv.db". Possible solutions: close all other connection(s); use the server mode [90020-224]
+2024-06-03 16:57:16 ERROR HibernateUtil:25 - Unable to create requested service [org.hibernate.engine.jdbc.env.spi.JdbcEnvironment] due to: Error calling Driver#connect [Database may be already in use: "C:/Users/zhenya/IdeaProjects/media-chameleon/data/data.mv.db". Possible solutions: close all other connection(s); use the server mode [90020-224]] [null]
+2024-06-03 16:57:16 ERROR HibernateUtil:25 - Unable to create requested service [org.hibernate.engine.jdbc.env.spi.JdbcEnvironment] due to: Error calling Driver#connect [Database may be already in use: "C:/Users/zhenya/IdeaProjects/media-chameleon/data/data.mv.db". Possible solutions: close all other connection(s); use the server mode [90020-224]] [null]
+2024-06-03 16:57:39 ERROR SqlExceptionHelper:150 - Referential integrity constraint violation: "FK1OM3EENM71NOIWOYPHOC4A3P7: PUBLIC.SESSION FOREIGN KEY(ACCOUNT_ID) REFERENCES PUBLIC.ACCOUNT(ID) (UUID '675c7d3c-c569-49a9-badb-ffe4deb0946d')"; SQL statement:
+delete from Account where id=? [23503-224]
+2024-06-03 16:58:39 ERROR SqlExceptionHelper:150 - Referential integrity constraint violation: "FK1OM3EENM71NOIWOYPHOC4A3P7: PUBLIC.SESSION FOREIGN KEY(ACCOUNT_ID) REFERENCES PUBLIC.ACCOUNT(ID) (UUID 'd6573346-a81b-46c8-9a33-53e3cf3f42be')"; SQL statement:
+delete from Account where id=? [23503-224]
+2024-06-03 16:59:53 ERROR SqlExceptionHelper:150 - Referential integrity constraint violation: "FK1OM3EENM71NOIWOYPHOC4A3P7: PUBLIC.SESSION FOREIGN KEY(ACCOUNT_ID) REFERENCES PUBLIC.ACCOUNT(ID) (UUID 'caf5752e-8b34-4062-9702-639a59ffd09c')"; SQL statement:
+delete from Account where id=? [23503-224]
+2024-06-03 17:03:56 ERROR SqlExceptionHelper:150 - Referential integrity constraint violation: "FK1OM3EENM71NOIWOYPHOC4A3P7: PUBLIC.SESSION FOREIGN KEY(ACCOUNT_ID) REFERENCES PUBLIC.ACCOUNT(ID) (UUID '77512022-a1f3-4920-b7f3-8ba45c9a41a2')"; SQL statement:
+delete from Account where id=? [23503-224]
+2024-06-03 17:10:50 ERROR SqlExceptionHelper:150 - The object is already closed [90007-224]
+2024-06-03 17:10:56 ERROR SqlExceptionHelper:150 - The object is already closed [90007-224]
+2024-06-03 17:11:04 ERROR SqlExceptionHelper:150 - The object is already closed [90007-224]
+2024-06-03 17:11:18 ERROR SqlExceptionHelper:150 - The object is already closed [90007-224]
+2024-06-03 17:11:19 ERROR SqlExceptionHelper:150 - The object is already closed [90007-224]
+2024-06-03 17:15:15 ERROR SqlExceptionHelper:150 - The object is already closed [90007-224]
+2024-06-03 17:15:17 ERROR SqlExceptionHelper:150 - The object is already closed [90007-224]
+2024-06-03 23:13:01 ERROR MainMenuFactory:17 - 
+/C:/Users/zhenya/IdeaProjects/media-chameleon/target/classes/pages/main/ConverterMenu.fxml:58
+
+2024-06-05 00:18:06 ERROR MainMenuFactory:17 - 
+/C:/Users/zhenya/IdeaProjects/media-chameleon/target/classes/pages/main/ConverterMenu.fxml:58
+
+2024-06-06 00:00:49 ERROR SqlExceptionHelper:150 - Unique index or primary key violation: "PUBLIC.UK_BRC46QNGKLL2BDSF5MCED7VIG_INDEX_2 ON PUBLIC.FILE(PATH NULLS FIRST) VALUES ( /* 161 */ 'C:\\Users\\zhenya\\Pictures\\IMGP2806-1.jpg' )"; SQL statement:
+insert into File (path,id) values (?,?) [23505-224]
+2024-06-06 00:00:49 ERROR SqlExceptionHelper:150 - Unique index or primary key violation: "PUBLIC.UK_BRC46QNGKLL2BDSF5MCED7VIG_INDEX_2 ON PUBLIC.FILE(PATH NULLS FIRST) VALUES ( /* 115 */ 'C:\\Users\\zhenya\\Pictures\\IMGP2938.jpg' )"; SQL statement:
+insert into File (path,id) values (?,?) [23505-224]
+2024-06-06 00:00:49 ERROR SqlExceptionHelper:150 - Unique index or primary key violation: "PUBLIC.UK_BRC46QNGKLL2BDSF5MCED7VIG_INDEX_2 ON PUBLIC.FILE(PATH NULLS FIRST) VALUES ( /* 155 */ 'C:\\Users\\zhenya\\Pictures\\IMGP2825.jpg' )"; SQL statement:
+insert into File (path,id) values (?,?) [23505-224]
+2024-06-06 00:07:47 ERROR SqlExceptionHelper:150 - Unique index or primary key violation: "PUBLIC.UK_BRC46QNGKLL2BDSF5MCED7VIG_INDEX_2 ON PUBLIC.FILE(PATH NULLS FIRST) VALUES ( /* 105 */ 'C:\\Users\\zhenya\\Pictures\\IMGP2979.jpg' )"; SQL statement:
+insert into File (path,id) values (?,?) [23505-224]
+2024-06-06 00:14:50 ERROR SqlExceptionHelper:150 - Unique index or primary key violation: "PUBLIC.UK_BRC46QNGKLL2BDSF5MCED7VIG_INDEX_2 ON PUBLIC.FILE(PATH NULLS FIRST) VALUES ( /* 144 */ 'C:\\Users\\zhenya\\Pictures\\IMGP2849.jpg' )"; SQL statement:
+insert into File (path,id) values (?,?) [23505-224]

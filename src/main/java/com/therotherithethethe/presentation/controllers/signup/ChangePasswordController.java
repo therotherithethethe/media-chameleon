@@ -17,6 +17,10 @@ import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
 
+/**
+ * Represents a controller for changing passwords in the application.
+ * This controller manages the UI components related to changing passwords.
+ */
 public class ChangePasswordController implements Initializable {
 
     @FXML
@@ -31,6 +35,11 @@ public class ChangePasswordController implements Initializable {
     public AnchorPane mainAncPane;
     private boolean isFormValid = false;
 
+    /**
+     * Initializes the controller.
+     * @param url The location used to resolve relative paths for the root object.
+     * @param resourceBundle The resources used to localize the root object.
+     */
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         initializePasswordPassFieldValidationListener();

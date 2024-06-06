@@ -5,6 +5,8 @@ import com.therotherithethethe.presentation.controllers.main.MainMenuFactory;
 import com.therotherithethethe.persistance.entity.Account;
 import com.therotherithethethe.domain.services.AccountService;
 import java.net.URL;
+import java.util.ArrayList;
+import java.util.Objects;
 import java.util.Optional;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
@@ -69,7 +71,9 @@ public class LoginController implements Initializable {
         var foundedAccount = new Account()
             .findByColumn(acc -> acc.name.equals(nameOrEmail) || acc.email.equals(nameOrEmail))
             .getFirst();
-
+        if(Objects.isNull(foundedAccount.session)) {
+            foundedAccount.session = new ArrayList<>();
+        }
         SignupService signupService = SignupService.getInstance();
         signupService.curAcc = foundedAccount;
         signupService.sendEmail();
